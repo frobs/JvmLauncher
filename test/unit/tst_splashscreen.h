@@ -3,8 +3,6 @@
 
 #include <QString>
 #include <QtTest>
-#include <QApplication>
-#include <QPixmap>
 #include "src/graphics/splashscreen.h"
 
 class SplashScreenTest : public QObject{
