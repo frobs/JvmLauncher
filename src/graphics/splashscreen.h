@@ -6,23 +6,23 @@
 
 class SplashScreen : public QSplashScreen{
   Q_OBJECT
-public:
-  static SplashScreen *getInstance(){
-    if(MySplash == NULL){
-      QPixmap image(":/resources/img/SplashImage.jpg");
-      MySplash = new SplashScreen();
-      MySplash->setPixmap(image);
+  public:
+    static SplashScreen *getInstance(){
+      if(MySplash == NULL){
+        QPixmap image(":/resources/img/SplashImage.jpg");
+        MySplash = new SplashScreen();
+        MySplash->setPixmap(image);
+      }
+      return MySplash;
     }
-    return MySplash;
-  }
-  static void setSplashMessage(QString message);
-  ~SplashScreen();
-private:
-  explicit SplashScreen(QWidget *parent = 0);
-  static SplashScreen* MySplash;
-signals:
+    static void setSplashMessage(QString message);
+    ~SplashScreen();
+  private:
+    explicit SplashScreen(QWidget *parent = 0);
+    static SplashScreen* MySplash;
+  signals:
 
-public slots:
+  public slots:
 
 };
 
