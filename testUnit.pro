@@ -17,7 +17,8 @@ SOURCES += test/unit/main.cpp \
     src/lib/operativesystem/linux.cpp \
     src/lib/operativesystem/multios.cpp \
     src/lib/operativesystem/unix.cpp \
-    test/unit/tst_unix.cpp
+    test/unit/tst_unix.cpp \
+    test/unit/tst_linux.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
@@ -28,4 +29,5 @@ HEADERS += \
     src/lib/operativesystem/linux.h \
     src/lib/operativesystem/multios.h \
     src/lib/operativesystem/unix.h \
-    test/unit/tst_unix.h
+    test/unit/tst_unix.h \
+    test/unit/tst_linux.h
