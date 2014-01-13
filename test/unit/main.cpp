@@ -2,6 +2,7 @@
 #include <QApplication>
 #include "tst_splashscreen.h"
 #include "tst_multios.h"
+#include "tst_unix.h"
 
 int main(int argc, char* argv[]){
   QApplication app(argc,argv);
@@ -12,4 +13,6 @@ int main(int argc, char* argv[]){
   MultiOsTest multiOsTest;
   QTest::qExec(&multiOsTest);
 
+  UnixTest unixTest;
+  QTest::qExec(&unixTest);
 }
