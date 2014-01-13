@@ -1,5 +1,6 @@
 #include <QtTest/QTest>
 #include <QApplication>
+#include <QString>
 #include "tst_splashscreen.h"
 #include "tst_multios.h"
 #include "tst_unix.h"

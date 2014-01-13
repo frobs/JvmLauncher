@@ -6,22 +6,20 @@ void MultiOsTest::initTestCase(){
   operativeSystem = new MultiOs();
 }
 
-void MultiOsTest::ShouldReturnCoresNumberAndMustBeHigherThanZero(){
-
-  QVERIFY2(operativeSystem->getCoresNum() > 0, "The number of cores obtained is 0, this is imposible!!");
-
+void MultiOsTest::getProcessorCoresNumberReturnAValidValue(){
+  QVERIFY2(operativeSystem->getCoresNum() > 0, "should be true");
 }
 
-void MultiOsTest::ShouldReturnProcessorSseAndMustBeHigherThanZero(){
-  QVERIFY2(operativeSystem->getSseVersion()>0, "The processor sse obtained is 0");
+void MultiOsTest::getProcessorSseVersionReturnAValidValue(){
+  QVERIFY2(operativeSystem->getSseVersion()>0, "should be true");
 }
 
-void MultiOsTest::ShouldReturnScreenHeightAndMustBeHigherThanZero(){
-  QVERIFY2(operativeSystem->getScreenHeight()>0, "The screen height obtained is 0, this is imposible!!");
+void MultiOsTest::getScreenHeightReturnAValidValue(){
+  QVERIFY2(operativeSystem->getScreenHeight()>0, "should be true");
 }
 
-void MultiOsTest::ShouldReturnScreenWidthAndMustBeHigherThanZero(){
-  QVERIFY2(operativeSystem->getScreenWidth()>0, "The screen width obtained is 0, this is imposible!!");
+void MultiOsTest::getScreenWidthReturnAValidValue(){
+  QVERIFY2(operativeSystem->getScreenWidth()>0, "should be true");
 }
 
 void MultiOsTest::cleanupTestCase(){}

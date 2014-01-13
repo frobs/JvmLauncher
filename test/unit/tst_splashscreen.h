@@ -1,7 +1,6 @@
 #ifndef TST_SPLASHSCREEN_H
 #define TST_SPLASHSCREEN_H
 
-#include <QString>
 #include <QtTest>
 #include "src/graphics/splashscreen.h"
 
@@ -16,8 +15,7 @@ class SplashScreenTest : public QObject{
     QSplashScreen* splash2;
   private Q_SLOTS:
     void initTestCase();
-    void cleanupTestCase();
-    void ShouldReturnTrueIfTwoInstanceOfSplashScreenHaveTheSameReference();
+    void TwoObjectsReferencesToTheSameInstance();
 };
 
 #endif // TST_SPLASHSCREEN_H

@@ -7,8 +7,8 @@ void SplashScreenTest::initTestCase(){
   splash2 = SplashScreen::getInstance();
 }
 
-void SplashScreenTest::ShouldReturnTrueIfTwoInstanceOfSplashScreenHaveTheSameReference(){
-  QVERIFY2(splash==splash2, "The instance returned from two splashScreen objects aren't the same");
+void SplashScreenTest::TwoObjectsReferencesToTheSameInstance(){
+  QVERIFY2(splash==splash2, "Should be true");
 }
 
 void SplashScreenTest::cleanupTestCase(){}

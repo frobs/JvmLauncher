@@ -6,11 +6,11 @@ void LinuxTest::initTestCase(){
   LinuxOperativeSystem = new Linux();
 }
 
-void LinuxTest::getLinuxTotalRam(){
+void LinuxTest::getLinuxTotalRamReturnAValidValue(){
   QVERIFY2(LinuxOperativeSystem->getTotalRam() > 0, "Should be true");
 }
 
-void LinuxTest::getLinuxFreeRam(){
+void LinuxTest::getLinuxFreeRamReturnAValidValue(){
   QVERIFY2(LinuxOperativeSystem->getFreeRam()>0, "Should be true");
 }
 

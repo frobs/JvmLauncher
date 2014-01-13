@@ -1,7 +1,6 @@
 #ifndef TST_LINUX_H
 #define TST_LINUX_H
 
-#include <QString>
 #include <QtTest>
 #include "src/lib/operativesystem/linux.h"
 
@@ -14,8 +13,8 @@ class LinuxTest : public QObject{
     Linux *LinuxOperativeSystem;
   private Q_SLOTS:
     void initTestCase();
-    void getLinuxTotalRam();
-    void getLinuxFreeRam();
+    void getLinuxTotalRamReturnAValidValue();
+    void getLinuxFreeRamReturnAValidValue();
     void TotalRamMustBeHigherThanFreeRam();
 };
 

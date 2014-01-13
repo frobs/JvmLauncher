@@ -13,13 +13,12 @@ class UnixTest : public QObject{
     Unix *UnixOperativeSystem;
   private Q_SLOTS:
     void initTestCase();
-    void cleanupTestCase();
-    void ShouldReturnOsArchitectureQStringWithLenghtHigherThanZero();
-    void ShouldReturnOsVersionNumberQStringWithLenghtHigherThanZero();
-    void ShouldReturnOsFullVersionQStringWithLenghtHigherThanZero();
-    void ShouldReturnOsArchitectureQStringInitialized();
-    void ShouldReturnOsVersionNumberQStringInitilized();
-    void ShouldReturnOsFullVersionQStringInitiliazed();
+    void OsArchitectureIsNotEmpty();
+    void OsVersionNumberIsNotEmpty();
+    void OsFullVersionIsNotEmpty();
+    void OsArchitectureIsNotNull();
+    void OsVersionNumberIsNotNull();
+    void OsFullVersionIsNotNull();
 };
 
 #endif // TST_UNIX_H
