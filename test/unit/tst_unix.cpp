@@ -31,5 +31,3 @@ void UnixTest::OsFullVersionIsNotNull(){
   QVERIFY2(!UnixOperativeSystem->getFullOsVersion().isNull(), "The OS full version received is null");
 }
 
-
-void UnixTest::cleanupTestCase(){}

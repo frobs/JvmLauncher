@@ -2,7 +2,7 @@
 #define TST_LINUX_H
 
 #include <QtTest>
-#include "src/lib/operativesystem/linux.h"
+#include "src/lib/os/linux.h"
 
 class LinuxTest : public QObject{
   Q_OBJECT

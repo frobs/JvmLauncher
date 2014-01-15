@@ -1,12 +1,12 @@
 #ifndef UNIX_H
 #define UNIX_H
 
+#include <QString>
 #include <sys/utsname.h>
 #include <sys/types.h>
 #include <sys/sysinfo.h>
-#include "src/lib/operativesystem/multios.h"
 
-class Unix : public MultiOs{
+class Unix{
 public:
   Unix();
   ~Unix();

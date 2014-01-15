@@ -2,7 +2,7 @@
 #define TST_UNIX_H
 
 #include <QtTest>
-#include "src/lib/operativesystem/unix.h"
+#include "src/lib/os/unix.h"
 
 class UnixTest : public QObject{
   Q_OBJECT

@@ -2,7 +2,7 @@
 #define TST_MULTIOS_H
 
 #include <QtTest>
-#include "src/lib/operativesystem/multios.h"
+#include "src/lib/os/multios.h"
 
 class MultiOsTest : public QObject{
   Q_OBJECT

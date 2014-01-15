@@ -7,14 +7,7 @@
 class SplashScreen : public QSplashScreen{
   Q_OBJECT
   public:
-    static SplashScreen *getInstance(){
-      if(MySplash == NULL){
-        QPixmap image(":/resources/img/SplashImage.jpg");
-        MySplash = new SplashScreen();
-        MySplash->setPixmap(image);
-      }
-      return MySplash;
-    }
+    static SplashScreen* getInstance();
     static void setSplashMessage(QString message);
     ~SplashScreen();
   private:

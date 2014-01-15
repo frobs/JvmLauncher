@@ -1,7 +1,8 @@
 #ifndef LINUX_H
 #define LINUX_H
 
-#include "src/lib/operativesystem/unix.h"
+#include "src/lib/os/multios.h"
+#include "src/lib/os/unix.h"
 
 class Linux: public Unix{
   public:

@@ -22,4 +22,3 @@ void MultiOsTest::getScreenWidthReturnAValidValue(){
   QVERIFY2(operativeSystem->getScreenWidth()>0, "should be true");
 }
 
-void MultiOsTest::cleanupTestCase(){}
