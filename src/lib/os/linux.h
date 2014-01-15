@@ -4,7 +4,7 @@
 #include "src/lib/os/multios.h"
 #include "src/lib/os/unix.h"
 
-class Linux: public Unix{
+class Linux: public Unix, public MultiOs{
   public:
     Linux();
     ~Linux();

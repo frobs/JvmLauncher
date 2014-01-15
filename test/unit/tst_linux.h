@@ -2,6 +2,7 @@
 #define TST_LINUX_H
 
 #include <QtTest>
+#include <QString>
 #include "src/lib/os/linux.h"
 
 class LinuxTest : public QObject{
@@ -16,6 +17,8 @@ class LinuxTest : public QObject{
     void getLinuxTotalRamReturnAValidValue();
     void getLinuxFreeRamReturnAValidValue();
     void TotalRamMustBeHigherThanFreeRam();
+    void MultiOsInherittedCorrectly();
+    void UnixInherittedCorrectly();
 };
 
 #endif // TST_LINUX_H
