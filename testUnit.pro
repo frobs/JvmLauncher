@@ -7,7 +7,7 @@
 
 QT       += widgets testlib core
 
-TARGET = tst_splashscreen
+TARGET = testUnitJvmLauncher
 CONFIG   += console
 CONFIG   -= app_bundle
 
