@@ -1,6 +1,5 @@
 <RCC>
-    <qresource prefix="/">
-        <file>resources/img/SplashImage.jpg</file>
+    <qresource prefix="/test">
         <file>config/minimun-system-requeriments.ini</file>
     </qresource>
 </RCC>

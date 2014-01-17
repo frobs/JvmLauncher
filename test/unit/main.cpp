@@ -5,6 +5,7 @@
 #include "tst_multios.h"
 #include "tst_unix.h"
 #include "tst_linux.h"
+#include "tst_configurationfile.h"
 
 int main(int argc, char* argv[]){
   QApplication app(argc,argv);
@@ -20,6 +21,10 @@ int main(int argc, char* argv[]){
 
   MultiOsTest multiOsTest;
   QTest::qExec(&multiOsTest);
+
+  ConfigurationFileTest configurationFileTest;
+  QTest::qExec(&configurationFileTest);
+
 //-------------WINDOWS TESTS-------------
   #ifdef Q_OS_WIN32
   #endif

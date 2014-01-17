@@ -17,73 +17,57 @@ DEFINES += SRCDIR=\\\"$$PWD/\\\"
 #This give us access to all files of the project
 DEPENDPATH+= ../../
 
+#----------------ALL PLATFORMS----------------
+HEADERS += \
+    src/graphics/splashscreen.h \
+    src/lib/os/multios.h \
+    test/unit/tst_multios.h \
+    test/unit/tst_splashscreen.h \
+    src/lib/os/osruntime.h \
+    test/unit/tst_configurationfile.h \
+    src/lib/utils/configurationfile.h \
+    src/lib/utils/qtresourcesfileconstants.h
+
+
+SOURCES += \
+    src/graphics/splashscreen.cpp \
+    src/lib/os/multios.cpp \
+    test/unit/main.cpp \
+    test/unit/tst_multios.cpp \
+    test/unit/tst_splashscreen.cpp \
+    src/lib/os/osruntime.cpp \
+    test/unit/tst_configurationfile.cpp \
+    src/lib/utils/configurationfile.cpp
+
 
 #We need specify what classes will be available for each
 #operative system if we include a header of Linux and we
 #are compiling in Windows, the universe explodes.
+win32{
+ #----------------WINDOWS----------------
 
-#---------------CLASSES THAT WILL BE TESTED------------------------
-HEADERS += \
-  src/graphics/splashscreen.h \
-  src/lib/os/multios.h
-  win32{
-
+}else{
+  #----------------UNIX----------------
+  HEADERS += \
+    src/lib/os/unix.h \
+    test/unit/tst_unix.h
+  SOURCES += \
+    src/lib/os/unix.cpp \
+    test/unit/tst_unix.cpp
+  mac{
+  #----------------MAC----------------
   }else{
+    #----------------LINUX----------------
     HEADERS += \
-      src/lib/os/unix.h
-    mac{
+      src/lib/os/linux.h \
+      test/unit/tst_linux.h
 
-    }else{
-      HEADERS += \
-        src/lib/os/linux.h
-    }
-  }
-SOURCES += \
-  src/graphics/splashscreen.cpp \
-  src/lib/os/multios.cpp
-  win32{
-
-  }else{
     SOURCES += \
-      src/lib/os/unix.cpp
-    mac{
-
-    }else{
-      SOURCES += \
-        src/lib/os/linux.cpp
-    }
+    src/lib/os/linux.cpp \
+    test/unit/tst_linux.cpp
   }
+}
 
-#---------------TEST CLASSES------------------------------------
-HEADERS += \
-  test/unit/tst_splashscreen.h \
-  test/unit/tst_multios.h
-  win32{
+RESOURCES += \
+    test/resources/TestResourcesFile.qrc
 
-  }else{
-    HEADERS += \
-      test/unit/tst_unix.h
-    mac{
-
-    }else{
-      HEADERS += \
-        test/unit/tst_linux.h
-    }
-  }
-SOURCES += \
-  test/unit/main.cpp \
-  test/unit/tst_splashscreen.cpp \
-  test/unit/tst_multios.cpp
-
-  win32{
-
-  }else{
-    SOURCES += \
-      test/unit/tst_unix.cpp
-    mac{
-
-    }else{
-      SOURCES += \
-        test/unit/tst_linux.cpp
-    }
-  }

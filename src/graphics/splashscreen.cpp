@@ -1,11 +1,10 @@
 #include "splashscreen.h"
 
 SplashScreen* SplashScreen::MySplash = NULL;
-//SplashScreen* SplashScreen::getInstance = NULL;
 
 SplashScreen* SplashScreen::getInstance(){
   if(MySplash == NULL){
-    QPixmap image(":/resources/img/SplashImage.jpg");
+    QPixmap image(PATH_TO_SPLASHSCREEN_IMAGE);
     MySplash = new SplashScreen();
     MySplash->setPixmap(image);
   }

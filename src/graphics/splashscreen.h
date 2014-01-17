@@ -3,6 +3,7 @@
 
 #include <QSplashScreen>
 #include <QPixmap>
+#include "src/lib/utils/qtresourcesfileconstants.h"
 
 class SplashScreen : public QSplashScreen{
   Q_OBJECT

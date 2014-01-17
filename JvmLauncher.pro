@@ -8,7 +8,9 @@ DEPENDPATH += . src src/graphics
 HEADERS += \
   src/graphics/splashscreen.h \
   src/lib/os/multios.h \
-  src/lib/spec/systemspecifications.h
+  src/lib/utils/qtresourcesfileconstants.h \
+    src/lib/os/osruntime.h \
+    src/lib/utils/configurationfile.h
   win32{
 
   }else{
@@ -25,7 +27,8 @@ SOURCES += \
   src/main.cpp \
   src/graphics/splashscreen.cpp \
   src/lib/os/multios.cpp \
-  src/lib/spec/systemspecifications.cpp
+    src/lib/os/osruntime.cpp \
+    src/lib/utils/configurationfile.cpp
   win32{
 
   }else{
