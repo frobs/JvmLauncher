@@ -9,8 +9,10 @@ HEADERS += \
   src/graphics/splashscreen.h \
   src/lib/os/multios.h \
   src/lib/utils/qtresourcesfileconstants.h \
-    src/lib/os/osruntime.h \
-    src/lib/utils/configurationfile.h
+  src/lib/os/osruntime.h \
+  src/lib/utils/configurationfile.h \
+  src/lib/spec/specificationsfactory.h \
+  src/lib/spec/systemspecifications.h
   win32{
 
   }else{
@@ -20,6 +22,7 @@ HEADERS += \
 
     }else{
       HEADERS += \
+        src/lib/spec/linuxspecifications.h \
         src/lib/os/linux.h
     }
   }
@@ -27,8 +30,10 @@ SOURCES += \
   src/main.cpp \
   src/graphics/splashscreen.cpp \
   src/lib/os/multios.cpp \
-    src/lib/os/osruntime.cpp \
-    src/lib/utils/configurationfile.cpp
+  src/lib/os/osruntime.cpp \
+  src/lib/utils/configurationfile.cpp \
+  src/lib/spec/specificationsfactory.cpp \
+  src/lib/spec/systemspecifications.cpp
   win32{
 
   }else{
@@ -38,6 +43,7 @@ SOURCES += \
 
     }else{
       SOURCES += \
+        src/lib/spec/linuxspecifications.cpp \
         src/lib/os/linux.cpp
     }
   }

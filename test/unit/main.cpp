@@ -6,6 +6,7 @@
 #include "tst_unix.h"
 #include "tst_linux.h"
 #include "tst_configurationfile.h"
+#include "tst_linuxspecifications.h"
 
 int main(int argc, char* argv[]){
   QApplication app(argc,argv);
@@ -43,5 +44,8 @@ int main(int argc, char* argv[]){
   #ifdef  Q_OS_LINUX
       LinuxTest linuxTest;
       QTest::qExec(&linuxTest);
+
+      LinuxSpecificationsTest linuxSpecificationsTest;
+      QTest::qExec(&linuxSpecificationsTest);
   #endif
 }

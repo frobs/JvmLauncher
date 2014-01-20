@@ -26,7 +26,9 @@ HEADERS += \
     src/lib/os/osruntime.h \
     test/unit/tst_configurationfile.h \
     src/lib/utils/configurationfile.h \
-    src/lib/utils/qtresourcesfileconstants.h
+    src/lib/utils/qtresourcesfileconstants.h \
+    src/lib/spec/systemspecifications.h \
+    src/lib/spec/specificationsfactory.h
 
 
 SOURCES += \
@@ -37,7 +39,9 @@ SOURCES += \
     test/unit/tst_splashscreen.cpp \
     src/lib/os/osruntime.cpp \
     test/unit/tst_configurationfile.cpp \
-    src/lib/utils/configurationfile.cpp
+    src/lib/utils/configurationfile.cpp \
+    src/lib/spec/systemspecifications.cpp \
+    src/lib/spec/specificationsfactory.cpp
 
 
 #We need specify what classes will be available for each
@@ -59,11 +63,15 @@ win32{
   }else{
     #----------------LINUX----------------
     HEADERS += \
+      src/lib/spec/linuxspecifications.h \
       src/lib/os/linux.h \
+      test/unit/tst_linuxspecifications.h \
       test/unit/tst_linux.h
 
     SOURCES += \
+    src/lib/spec/linuxspecifications.cpp \
     src/lib/os/linux.cpp \
+    test/unit/tst_linuxspecifications.cpp \
     test/unit/tst_linux.cpp
   }
 }

@@ -6,34 +6,35 @@ MultiOs::~MultiOs(){
   delete(regs);
 }
 
-unsigned int MultiOs::getScreenWidth(){
-  return qApp->desktop()->width();
+QString MultiOs::getScreenWidth(){
+  return QString::number(qApp->desktop()->width());
 }
 
-unsigned int MultiOs::getScreenHeight(){
-  return qApp->desktop()->height();
+QString MultiOs::getScreenHeight(){
+  return QString::number(qApp->desktop()->height());
 }
 
-unsigned int MultiOs::getCoresNum(){
+QString MultiOs::getCoresNum(){
   cpuID(1, regs);
- return (regs[1] >> 16) & 0xff; // EBX[23:16];
+ unsigned int coresNum = (regs[1] >> 16) & 0xff; // EBX[23:16];
+ return QString::number(coresNum);
 }
 
-unsigned int MultiOs::getSseVersion(){
+QString MultiOs::getSseVersion(){
   cpuID(0x00000001,regs);
-  unsigned int sseVersion = 0;
+  QString sseVersion;
   if((regs[3]>>25)  & 0x1){
-    sseVersion=1;
+    sseVersion = "1";
     }
   else if((regs[3]>>26) & 0x1){
-    sseVersion=2;
+    sseVersion = "2";
     }
   else if((regs[2]>>0) & 0x1){
-    sseVersion=3;
+    sseVersion = "3";
     }
   else if((regs[2]>>19) & 0x1){
-    sseVersion=4;
-    }
+    sseVersion = "4";
+  }
   return sseVersion;
 }
 

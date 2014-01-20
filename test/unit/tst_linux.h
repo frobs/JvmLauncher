@@ -11,7 +11,7 @@ class LinuxTest : public QObject{
   public:
     LinuxTest();
   private:
-    Linux *LinuxOperativeSystem;
+    Linux *linuxOperativeSystem;
   private Q_SLOTS:
     void initTestCase();
     void getLinuxTotalRamReturnAValidValue();

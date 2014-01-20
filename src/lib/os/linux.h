@@ -8,8 +8,8 @@ class Linux: public Unix, public MultiOs{
   public:
     Linux();
     ~Linux();
-    unsigned long getTotalRam();
-    unsigned long getFreeRam();
+    QString getTotalRam();
+    QString getFreeRam();
   private:
     struct sysinfo memoryInformation;
 };

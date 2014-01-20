@@ -16,10 +16,10 @@ class MultiOs{
   public:
     MultiOs();
     ~MultiOs();
-    unsigned int getScreenWidth();
-    unsigned int getScreenHeight();
-    unsigned int getSseVersion();
-    unsigned int getCoresNum();
+    QString getScreenWidth();
+    QString getScreenHeight();
+    QString getSseVersion();
+    QString getCoresNum();
   private:
     unsigned regs[4];
     void cpuID(unsigned,unsigned []);
