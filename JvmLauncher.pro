@@ -1,18 +1,31 @@
 QT += widgets core gui
 TEMPLATE = app
 DEPENDPATH += . src src/graphics
+CONFIG += app
+
+linux{
+  INCLUDEPATH += $$(JDK_HOME)/include
+  INCLUDEPATH += $$(JDK_HOME)/include/linux
+  LIBS += -L$$(JAVA_HOME)/lib/amd64/server -ljvm
+  LIBS += -L$$(JAVA_HOME)/lib/i386/client -ljvm
+}
+
+
 
 #We need specify what classes will be available for each
 #operative system if we include a header of Linux and we
 #are compiling in Windows, the universe explodes.
 HEADERS += \
   src/graphics/splashscreen.h \
-  src/lib/os/multios.h \
   src/lib/utils/qtresourcesfileconstants.h \
   src/lib/os/osruntime.h \
   src/lib/utils/configurationfile.h \
   src/lib/spec/specificationsfactory.h \
-  src/lib/spec/systemspecifications.h
+  src/lib/spec/systemspecifications.h \
+    src/lib/jvm/virtualmachine.h \
+    src/lib/jvm/jvmparameters.h \
+    src/lib/utils/runtimeconstants.h \
+    src/lib/os/multios.h
   win32{
 
   }else{
@@ -29,11 +42,13 @@ HEADERS += \
 SOURCES += \
   src/main.cpp \
   src/graphics/splashscreen.cpp \
-  src/lib/os/multios.cpp \
   src/lib/os/osruntime.cpp \
   src/lib/utils/configurationfile.cpp \
   src/lib/spec/specificationsfactory.cpp \
-  src/lib/spec/systemspecifications.cpp
+  src/lib/spec/systemspecifications.cpp \
+    src/lib/jvm/virtualmachine.cpp \
+    src/lib/jvm/jvmparameters.cpp \
+    src/lib/os/multios.cpp
   win32{
 
   }else{

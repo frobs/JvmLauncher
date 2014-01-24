@@ -1,7 +1,7 @@
 #include "linuxspecifications.h"
 
-LinuxSpecifications::LinuxSpecifications(QMap<QString,QString> &minimunSystemRequeriments):SystemSpecifications(minimunSystemRequeriments){
-  //desde aqui puedo acceder a datos los metodos protected de la clase padre
+LinuxSpecifications::LinuxSpecifications(QHash<QString,QString> &minimunSystemRequeriments):SystemSpecifications(minimunSystemRequeriments){
+  //How this class is the result of a factory we not need call to linux factory, operative system is already discriminated
   systemSpecificationsChecker = new Linux();
   getRuntimeSystemSpecifications();
 }

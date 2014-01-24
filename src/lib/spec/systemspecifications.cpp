@@ -5,7 +5,7 @@ SystemSpecifications::SystemSpecifications(){
  validated = false;
 }
 
-SystemSpecifications::SystemSpecifications(QMap<QString,QString>& minimunSystemRequeriments){
+SystemSpecifications::SystemSpecifications(QHash<QString,QString>& minimunSystemRequeriments){
   validated = false;
   m_minimunSystemRequeriments=minimunSystemRequeriments;
 }
@@ -14,7 +14,7 @@ bool SystemSpecifications::isValid(){
   return validated;
 }
 
-void SystemSpecifications::validate(QMap<QString,QString>& runtimeSystemSpecifications){
+void SystemSpecifications::validate(QHash<QString,QString>& runtimeSystemSpecifications){
   foreach(QString key,runtimeSystemSpecifications.keys()){
     if(runtimeSystemSpecifications[key] < m_minimunSystemRequeriments[key]){
       errorMessage.append("The expected value of "+key+" is lower than "+m_minimunSystemRequeriments[key]+" this must be higher\n");

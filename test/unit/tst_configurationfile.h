@@ -2,7 +2,7 @@
 #define TST_CONFIGURATIONFILE_H
 
 #include <QTest>
-#include <QMap>
+#include <QHash>
 #include <QString>
 #include "src/lib/utils/configurationfile.h"
 
@@ -12,12 +12,12 @@ class ConfigurationFileTest : public QObject{
   public:
     ConfigurationFileTest();
   private:
-    QMap<QString,QString> result;
+    QHash<QString,QString> result;
     ConfigurationFile *configuration;
   private Q_SLOTS:
     void initTestCase();
-    void QMapOfReadedFileHaveAllElements();
-    void QMapOfReadedFileReturnTheCorrectValue();
+    void QHashOfReadedFileHaveAllElements();
+    void QHashOfReadedFileReturnTheCorrectValue();
 };
 
 #endif // TST_CONFIGURATIONFILE_H

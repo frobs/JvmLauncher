@@ -1,10 +1,10 @@
 #ifndef LINUX_H
 #define LINUX_H
 
-#include "src/lib/os/multios.h"
 #include "src/lib/os/unix.h"
+#include "src/lib/os/multios.h"
 
-class Linux: public Unix, public MultiOs{
+class Linux: public Unix,public MultiOs{
   public:
     Linux();
     ~Linux();

@@ -2,7 +2,7 @@
 #define SPECIFICATIONSFACTORY_H
 
 #include <QString>
-#include <QMap>
+#include <QHash>
 
 //LinuxSpecifications class include linux class that includes some headers linux dependent
 //If we include this class on windows for example it give us a error
@@ -11,9 +11,9 @@
 #endif
 
 class SpecificationsFactory{
-public:
-  SpecificationsFactory();
-  static SystemSpecifications* factory(QString type,QMap<QString,QString> minimunSystemSpecifications);
+  public:
+    SpecificationsFactory();
+    static SystemSpecifications* specFactory(QString type,QHash<QString,QString> minimunSystemSpecifications);
 };
 
 #endif // SPECIFICATIONSFACTORY_H

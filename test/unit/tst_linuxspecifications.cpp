@@ -5,7 +5,7 @@ LinuxSpecificationsTest::LinuxSpecificationsTest(){
 }
 
 void LinuxSpecificationsTest::initTestCase(){
-  QMap<QString,QString> minimunConfiguration;
+  QHash<QString,QString> minimunConfiguration;
   minimunConfiguration["total_ram"]="1";
   minimunConfiguration["free_ram"]="1";
   minimunConfiguration["ubuntu_version"]="10.04";

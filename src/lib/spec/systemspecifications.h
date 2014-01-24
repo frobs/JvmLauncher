@@ -3,17 +3,17 @@
 
 #include <QMessageBox>
 #include <QString>
-#include <QMap>
+#include <QHash>
 
 class SystemSpecifications{
   public:
    SystemSpecifications();
-    SystemSpecifications(QMap<QString,QString> &minimunSystemRequeriments);
+    SystemSpecifications(QHash<QString,QString> &minimunSystemRequeriments);
     bool isValid();
 
   protected:
-    QMap<QString,QString> m_minimunSystemRequeriments;
-    void validate(QMap<QString,QString>& runtimeSystemSpecifications);
+    QHash<QString,QString> m_minimunSystemRequeriments;
+    void validate(QHash<QString,QString>& runtimeSystemSpecifications);
 
   private:
     QString errorMessage;

@@ -3,8 +3,7 @@
 SpecificationsFactory::SpecificationsFactory(){
 }
 
-
-SystemSpecifications* SpecificationsFactory::factory(QString type, QMap<QString,QString> minimunSystemSpecifications) {
+SystemSpecifications* SpecificationsFactory::specFactory(QString type, QHash<QString,QString> minimunSystemSpecifications) {
   if(type == "linux") return new LinuxSpecifications(minimunSystemSpecifications);
 
 }
