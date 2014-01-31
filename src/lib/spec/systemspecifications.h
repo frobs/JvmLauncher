@@ -3,22 +3,29 @@
 
 #include <QMessageBox>
 #include <QString>
-#include <QHash>
+#include <QVariantHash>
+#include <QVariant>
+#include "src/lib/utils/qvariantlistformatter.h"
 
 class SystemSpecifications{
   public:
    SystemSpecifications();
-    SystemSpecifications(QHash<QString,QString> &minimunSystemRequeriments);
+    SystemSpecifications(QVariantHash &minimunSystemRequeriments);
     bool isValid();
 
   protected:
-    QHash<QString,QString> m_minimunSystemRequeriments;
-    void validate(QHash<QString,QString>& runtimeSystemSpecifications);
+    QVariantHash m_minimunSystemRequeriments;
+    QVariantHash runtimeSystemSpecifications;
+    void validate();
 
   private:
     QString errorMessage;
     QMessageBox msgBox;
     bool validated;
+    QString m_key;
+    QVariantListFormatter* minimunSpecificationsFormatter;
+    void evaluateIntValues(QString& fieldName, int minimunValidValue,int currentValue);
+    void evaluateQVariantListValues(QString& fieldName, QVariant minimunValidValue,QVariant currentValue);
 };
 
 #endif // SYSTEMSPECIFICATIONS_H

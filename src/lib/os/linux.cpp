@@ -3,18 +3,16 @@
 Linux::Linux(){}
 Linux::~Linux(){}
 
-QString Linux::getTotalRam(){
+QVariant Linux::getTotalRam(){
   sysinfo(&memoryInformation);
-  long totalRam= memoryInformation.totalram;
+  long long totalRam= memoryInformation.totalram;
   totalRam *= memoryInformation.mem_unit;
-  totalRam = totalRam/1000000;
-  return QString::number(totalRam);
+  return totalRam/1000000;
 }
 
-QString Linux::getFreeRam(){
+QVariant Linux::getFreeRam(){
   sysinfo(&memoryInformation);
-  unsigned long freeRam= memoryInformation.freeram;
+  long long freeRam= memoryInformation.freeram;
   freeRam *= memoryInformation.mem_unit;
-  freeRam = freeRam/1000000;
-  return QString::number(freeRam);
+  return freeRam/1000000;
 }

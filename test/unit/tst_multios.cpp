@@ -7,18 +7,18 @@ void MultiOsTest::initTestCase(){
 }
 
 void MultiOsTest::getProcessorCoresNumberReturnAValidValue(){
-  QVERIFY2(operativeSystem->getCoresNum() > 0, "should be true");
+  QVERIFY2(operativeSystem->getCoresNum().toInt() > 0, "should be true");
 }
 
 void MultiOsTest::getProcessorSseVersionReturnAValidValue(){
-  QVERIFY2(operativeSystem->getSseVersion()>0, "should be true");
+  QVERIFY2(operativeSystem->getSseVersion().toInt()>0, "should be true");
 }
 
 void MultiOsTest::getScreenHeightReturnAValidValue(){
-  QVERIFY2(operativeSystem->getScreenHeight()>0, "should be true");
+  QVERIFY2(operativeSystem->getScreenHeight().toInt()>0, "should be true");
 }
 
 void MultiOsTest::getScreenWidthReturnAValidValue(){
-  QVERIFY2(operativeSystem->getScreenWidth()>0, "should be true");
+  QVERIFY2(operativeSystem->getScreenWidth().toInt()>0, "should be true");
 }
 

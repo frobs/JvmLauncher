@@ -1,7 +1,7 @@
 #ifndef UNIX_H
 #define UNIX_H
 
-#include <QString>
+#include <QVariant>
 #include <sys/utsname.h>
 #include <sys/types.h>
 #include <sys/sysinfo.h>
@@ -10,9 +10,9 @@ class Unix{
 public:
   Unix();
   ~Unix();
-  QString getOsArchitecture();
-  QString getOsVersionNumber();
-  QString getFullOsVersion();
+  QVariant getOsArchitecture();
+  QVariant getOsVersionNumber();
+  QVariant getFullOsVersion();
 private:
   struct utsname unameData;
 };

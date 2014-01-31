@@ -13,7 +13,7 @@
 class SpecificationsFactory{
   public:
     SpecificationsFactory();
-    static SystemSpecifications* specFactory(QString type,QHash<QString,QString> minimunSystemSpecifications);
+    static SystemSpecifications* specFactory(QString type,QVariantHash minimunSystemSpecifications);
 };
 
 #endif // SPECIFICATIONSFACTORY_H

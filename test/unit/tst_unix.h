@@ -17,7 +17,6 @@ class UnixTest : public QObject{
     void OsVersionNumberIsNotEmpty();
     void OsFullVersionIsNotEmpty();
     void OsArchitectureIsNotNull();
-    void OsVersionNumberIsNotNull();
     void OsFullVersionIsNotNull();
 };
 

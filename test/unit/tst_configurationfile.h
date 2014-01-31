@@ -12,7 +12,7 @@ class ConfigurationFileTest : public QObject{
   public:
     ConfigurationFileTest();
   private:
-    QHash<QString,QString> result;
+    QHash<QString,QVariant> result;
     ConfigurationFile *configuration;
   private Q_SLOTS:
     void initTestCase();

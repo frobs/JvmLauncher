@@ -3,23 +3,25 @@
 
 #include <QSettings>
 #include <QString>
-#include <QStringList>
+#include <QVariantList>
+#include <QVariantHash>
 #include <typeinfo>
 
 class ConfigurationFile{
   public:
     ConfigurationFile(const QString& filePath);
     ~ConfigurationFile();
-    QHash<QString,QString> loadGroupKeyValue(QString& group);
-    QStringList getChildKeys(QString& group);
-    QStringList getSubGroups(QString& group);
-    QStringList getValues(QString& group);
+    QVariantHash loadGroupKeyValue(QString& group);
+    QVariantList getChildKeys(QString& group);
+    QVariantList getSubGroups(QString& group);
+    QVariantList getValues(QString& group);
   private:
     //I Use QHash because is faster than QHash for short lists of elements
-    QHash<QString,QString> readedConfiguration;
+    QVariantHash readedConfiguration;
     QSettings *settings;
-    QStringList m_subGroups;
-    QStringList m_keys;
+    QVariantList m_subGroups;
+    QVariantList m_keys;
+
 };
 
 #endif // CONFIGURATIONFILE_H

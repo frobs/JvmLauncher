@@ -23,5 +23,5 @@ void LinuxTest::MultiOsInherittedCorrectly(){
 }
 
 void LinuxTest::UnixInherittedCorrectly(){
-  QVERIFY2(!linuxOperativeSystem->getOsArchitecture().isEmpty(), "should be true");
+  QVERIFY2(!linuxOperativeSystem->getOsArchitecture().toString().isEmpty(), "should be true");
 }

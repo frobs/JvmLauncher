@@ -6,13 +6,12 @@
 
 class LinuxSpecifications : public SystemSpecifications{
   public:
-    LinuxSpecifications(QHash<QString,QString> &minimunSystemRequeriments);
+    LinuxSpecifications(QVariantHash& minimunSystemRequeriments);
 
   private:
     void getRuntimeSystemSpecifications();
     Linux* systemSpecificationsChecker;
-    QHash<QString,QString> m_runtimeSystemSpecifications;
-    QString getRuntimeDistribution();
+    QString getRuntimeDistribution(); 
   };
 
 #endif // LINUXSPECIFICATIONS_H
