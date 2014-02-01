@@ -1,11 +1,10 @@
-#include "qvariantlistformatter.h"
-#include <QUrl>
+#include "qvariantlistutils.h"
 
-QVariantListFormatter::QVariantListFormatter(){
+QVariantListUtils::QVariantListUtils(){
 }
 
 //This method convert QString to ints and real QStrings to int QVariantLists
-void QVariantListFormatter::formatQStringsWithDecimalsToIntegers(QVariantHash& hashToBeFormatted){
+void QVariantListUtils::formatQStringsWithDecimalsToIntegers(QVariantHash& hashToBeFormatted){
   QVariantList temporalVariantList;
   QStringList temporalStringList;
   foreach(QString key,hashToBeFormatted.keys()){
@@ -20,4 +19,19 @@ void QVariantListFormatter::formatQStringsWithDecimalsToIntegers(QVariantHash& h
         hashToBeFormatted[key] = hashToBeFormatted[key].toInt();
       }
   }
+}
+
+QStringList QVariantListUtils::toQStringList(QVariantList variantList){
+  QStringList result;
+  QListIterator<QVariant> i(variantList);
+  while (i.hasNext()) {
+    result << i.next().toString();
+  }
+  return result;
+}
+
+QVariantList QVariantListUtils::toQVariantList(QStringList stringList){
+  QVariantList result;
+  qCopy(stringList.begin(), stringList.end(), result.begin());
+  return result;
 }

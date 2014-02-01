@@ -20,22 +20,22 @@ void JvmParameters::generateJvmParameters(){
 void JvmParameters::generateDynamicParameters(){
   absoluteGroupPath = m_platform+"/dynamic";
   m_parameterHash = configFileReader->loadGroupKeyValue(absoluteGroupPath);
-  m_formattedParameters.append(formatClassPath(m_parameterHash["class_path"]));
-  m_formattedParameters.append(formatSse(m_parameterHash["sse"]));
-  m_formattedParameters.append(formatParallelThreads(m_parameterHash["parallel_gc_threads"]));
-  m_formattedParameters.append(formatXss(m_parameterHash["xss"]));
+  m_formattedParameters.append(formatClassPath(m_parameterHash["class_path"].toString()));
+  m_formattedParameters.append(formatSse(m_parameterHash["sse"].toString()));
+  m_formattedParameters.append(formatParallelThreads(m_parameterHash["parallel_gc_threads"].toString()));
+  m_formattedParameters.append(formatXss(m_parameterHash["xss"].toString()));
 }
 
-QString JvmParameters::formatXss(QString& parameterToRefactor){
+QString JvmParameters::formatXss(QString parameterToRefactor){
   return parameterToRefactor.replace("<value>",QString::number(operativeSystem->getCoresNum().toInt()*2046));
 }
 
-QString JvmParameters::formatParallelThreads(QString &parameterToRefactor){
-  return parameterToRefactor.replace("<value>",operativeSystem->getCoresNum());
+QString JvmParameters::formatParallelThreads(QString parameterToRefactor){
+  return parameterToRefactor.replace("<value>",operativeSystem->getCoresNum().toString());
 }
 
-QString JvmParameters::formatSse(QString& parameterToRefactor){
-  return parameterToRefactor.replace("<value>",operativeSystem->getSseVersion());
+QString JvmParameters::formatSse(QString parameterToRefactor){
+  return parameterToRefactor.replace("<value>",operativeSystem->getSseVersion().toString());
 }
 
 void JvmParameters::copyStaticSettingsOSArchitectureDependent(){
@@ -47,10 +47,10 @@ void JvmParameters::copyStaticSettingsOSArchitectureDependent(){
 }
 
 void JvmParameters::copyStaticSettings(QString& groupAbsolutePath){
-  m_formattedParameters += configFileReader->getValues(groupAbsolutePath);
+  m_formattedParameters += QVariantListUtils::toQStringList(configFileReader->getValues(groupAbsolutePath));
 }
 
-QString JvmParameters::formatClassPath(QString& classpathFileConfigurationValue){
+QString JvmParameters::formatClassPath(QString classpathFileConfigurationValue){
   QDir tempPath;
   QString classPathFormatted = "-Djava.class.path=";
   QStringList fileExtensionFilter("*.jar"); //We specify the type of files that we will get
@@ -62,9 +62,11 @@ QString JvmParameters::formatClassPath(QString& classpathFileConfigurationValue)
                               tempPath.entryList(fileExtensionFilter).join(CLASSPATH_SEPARATOR+relativePath)+
                               CLASSPATH_SEPARATOR);
   }
+  //Remove the last separator character of chasspath
+  classPathFormatted.chop(1);
   return classPathFormatted;
 }
 
-QStringList JvmParameters::getJvmParameters(){
+QStringList JvmParameters::get(){
   return m_formattedParameters;
 }

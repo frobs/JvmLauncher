@@ -7,10 +7,9 @@ SystemSpecifications::SystemSpecifications(){
 
 SystemSpecifications::SystemSpecifications(QVariantHash& minimunSystemRequeriments){
   validated = false;
-  minimunSpecificationsFormatter = new QVariantListFormatter();
   m_minimunSystemRequeriments=minimunSystemRequeriments;
   //We format strings to QVariantList for not depend of processor and her conversion to doubles and floats
-  minimunSpecificationsFormatter->formatQStringsWithDecimalsToIntegers(m_minimunSystemRequeriments);
+  QVariantListUtils::formatQStringsWithDecimalsToIntegers(m_minimunSystemRequeriments);
 }
 
 bool SystemSpecifications::isValid(){

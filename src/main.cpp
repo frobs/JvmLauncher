@@ -5,6 +5,9 @@
 #include "src/lib/os/osruntime.h"
 #include "src/lib/utils/configurationfile.h"
 #include "src/lib/spec/specificationsfactory.h"
+#include "src/lib/jvm/jvmparameters.h"
+#include "src/lib/jvm/virtualmachine.h"
+
 
 int main (int argc, char* argv[]){
   //TO-DO Create a QCoreApplication instead of QApplication if SplashScreen is disabled
@@ -18,10 +21,13 @@ int main (int argc, char* argv[]){
   OSRuntime* operativeSystemRuntimeChecker;
   ConfigurationFile* mininimunOSRequerimentsReader;
   SystemSpecifications* specifications;
+  JvmParameters* jvmParameters;
+
 
   QString currentOs;
   QHash<QString,QVariant> minimunOSRequerimentsHash;
   bool systemSpecificationsAreValidated;
+  QStringList jvmParams;
 
   operativeSystemRuntimeChecker = new OSRuntime();
   currentOs = operativeSystemRuntimeChecker->getOSRuntime();
@@ -29,13 +35,17 @@ int main (int argc, char* argv[]){
   minimunOSRequerimentsHash = mininimunOSRequerimentsReader->loadGroupKeyValue(currentOs);
   specifications = SpecificationsFactory::specFactory(currentOs,minimunOSRequerimentsHash);
   systemSpecificationsAreValidated = specifications->isValid();
+  jvmParameters = new JvmParameters(currentOs);
+  jvmParams = jvmParameters->get();
+
 
   //If the launcher came here all system specifications have been validated
   if (systemSpecificationsAreValidated){
     delete(operativeSystemRuntimeChecker);
     delete(mininimunOSRequerimentsReader);
     delete(specifications);
-
+    delete(jvmParameters);
+    delete(splash);
 
   }
 

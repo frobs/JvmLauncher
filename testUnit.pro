@@ -29,7 +29,7 @@ HEADERS += \
     src/lib/utils/qtresourcesfileconstants.h \
     src/lib/spec/systemspecifications.h \
     src/lib/spec/specificationsfactory.h \
-    src/lib/utils/qvariantlistformatter.h
+    src/lib/utils/qvariantlistutils.h
 
 
 SOURCES += \
@@ -43,7 +43,7 @@ SOURCES += \
     src/lib/utils/configurationfile.cpp \
     src/lib/spec/systemspecifications.cpp \
     src/lib/spec/specificationsfactory.cpp \
-    src/lib/utils/qvariantlistformatter.cpp
+    src/lib/utils/qvariantlistutils.cpp
 
 
 #We need specify what classes will be available for each

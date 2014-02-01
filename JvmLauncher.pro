@@ -22,9 +22,10 @@ HEADERS += \
   src/lib/utils/configurationfile.h \
   src/lib/spec/specificationsfactory.h \
   src/lib/spec/systemspecifications.h \
-    src/lib/utils/runtimeconstants.h \
-    src/lib/os/multios.h \
-    src/lib/utils/qvariantlistformatter.h
+  src/lib/utils/runtimeconstants.h \
+  src/lib/os/multios.h \
+    src/lib/jvm/jvmparameters.h \
+    src/lib/utils/qvariantlistutils.h
   win32{
 
   }else{
@@ -45,8 +46,9 @@ SOURCES += \
   src/lib/utils/configurationfile.cpp \
   src/lib/spec/specificationsfactory.cpp \
   src/lib/spec/systemspecifications.cpp \
-    src/lib/os/multios.cpp \
-    src/lib/utils/qvariantlistformatter.cpp
+  src/lib/os/multios.cpp \
+    src/lib/jvm/jvmparameters.cpp \
+    src/lib/utils/qvariantlistutils.cpp
   win32{
 
   }else{

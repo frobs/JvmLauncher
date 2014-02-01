@@ -5,7 +5,7 @@
 #include <QString>
 #include <QVariantHash>
 #include <QVariant>
-#include "src/lib/utils/qvariantlistformatter.h"
+#include "src/lib/utils/qvariantlistutils.h"
 
 class SystemSpecifications{
   public:
@@ -23,7 +23,6 @@ class SystemSpecifications{
     QMessageBox msgBox;
     bool validated;
     QString m_key;
-    QVariantListFormatter* minimunSpecificationsFormatter;
     void evaluateIntValues(QString& fieldName, int minimunValidValue,int currentValue);
     void evaluateQVariantListValues(QString& fieldName, QVariant minimunValidValue,QVariant currentValue);
 };
