@@ -12,6 +12,7 @@ class VirtualMachine{
   public:
     VirtualMachine();
     void create_jvm(QStringList &jvmArgs);
+    void destroy_jvm();
   private:
     void invoke_class();
     QString getJvmVersion();

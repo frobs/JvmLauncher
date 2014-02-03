@@ -18,12 +18,12 @@ int main (int argc, char* argv[]){
   SplashScreen::setSplashMessage(QString("Launching Launcher"));
   splash->show();
 
+
   OSRuntime* operativeSystemRuntimeChecker;
   ConfigurationFile* mininimunOSRequerimentsReader;
   SystemSpecifications* specifications;
   JvmParameters* jvmParameters;
   VirtualMachine* jvmLauncher;
-
   QString currentOs;
   QHash<QString,QVariant> minimunOSRequerimentsHash;
   bool systemSpecificationsAreValidated;
@@ -49,7 +49,6 @@ int main (int argc, char* argv[]){
     jvmLauncher->create_jvm(jvmParams);
 
   }
-
   app.exec();
   return EXIT_SUCCESS;
 }

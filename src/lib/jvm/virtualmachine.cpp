@@ -1,8 +1,6 @@
 #include "virtualmachine.h"
 
-VirtualMachine::VirtualMachine(){
-
-}
+VirtualMachine::VirtualMachine(){}
 
 void VirtualMachine::create_jvm(QStringList &jvmArgs){
   static JavaVMOption *options=NULL;
@@ -28,7 +26,6 @@ void VirtualMachine::create_jvm(QStringList &jvmArgs){
   }else{
     free(options);
     invoke_class();
-    jvm->DestroyJavaVM();
   }
 }
 
@@ -36,7 +33,6 @@ void VirtualMachine::invoke_class() {
   jclass cls;
   jmethodID javaMethod;
   jobjectArray applicationArgs;
-
   applicationArgs = env->NewObjectArray(0, env->FindClass("java/lang/String"), NULL);
   //class and main method
   cls = env->FindClass("MainWindow");
@@ -44,4 +40,10 @@ void VirtualMachine::invoke_class() {
   //call to main method
   javaMethod = env->GetStaticMethodID(cls, "main", "([Ljava/lang/String;)V");
   env->CallStaticVoidMethod(cls, javaMethod, applicationArgs); //Call to the method
+}
+
+//By default the jvm is autodestroyed by default when the
+//java application is exitted, but it can be needed in the future
+void VirtualMachine::destroy_jvm(){
+  jvm->DestroyJavaVM();
 }
