@@ -10,8 +10,6 @@ linux{
   LIBS += -L$$(JAVA_HOME)/lib/i386/client -ljvm
 }
 
-
-
 #We need specify what classes will be available for each
 #operative system if we include a header of Linux and we
 #are compiling in Windows, the universe explodes.
@@ -25,7 +23,8 @@ HEADERS += \
   src/lib/utils/runtimeconstants.h \
   src/lib/os/multios.h \
     src/lib/jvm/jvmparameters.h \
-    src/lib/utils/qvariantlistutils.h
+    src/lib/utils/qvariantlistutils.h \
+    src/lib/jvm/virtualmachine.h
   win32{
 
   }else{
@@ -48,7 +47,8 @@ SOURCES += \
   src/lib/spec/systemspecifications.cpp \
   src/lib/os/multios.cpp \
     src/lib/jvm/jvmparameters.cpp \
-    src/lib/utils/qvariantlistutils.cpp
+    src/lib/utils/qvariantlistutils.cpp \
+    src/lib/jvm/virtualmachine.cpp
   win32{
 
   }else{

@@ -21,6 +21,8 @@ A c++/qt multiplatform launcher for jvm applications
 
 > > `./JvmLauncher`
 
+> > Remember copy your application to the launcher directory with the same path that you have specified on your jvm-parameters.ini/classpath
+
 ##Compiling and executing the tests:
 > ###Linux:
 > > `qmake testUnit.pro`

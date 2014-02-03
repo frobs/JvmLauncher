@@ -13,5 +13,4 @@
 const QString CURRENT_APPLICATION_PATH = QDir::currentPath();
 
 
-
 #endif // RUNTIMECONSTANTS_H

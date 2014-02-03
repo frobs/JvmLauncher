@@ -22,7 +22,7 @@ int main (int argc, char* argv[]){
   ConfigurationFile* mininimunOSRequerimentsReader;
   SystemSpecifications* specifications;
   JvmParameters* jvmParameters;
-
+  VirtualMachine* jvmLauncher;
 
   QString currentOs;
   QHash<QString,QVariant> minimunOSRequerimentsHash;
@@ -37,6 +37,7 @@ int main (int argc, char* argv[]){
   systemSpecificationsAreValidated = specifications->isValid();
   jvmParameters = new JvmParameters(currentOs);
   jvmParams = jvmParameters->get();
+  jvmLauncher = new VirtualMachine();
 
 
   //If the launcher came here all system specifications have been validated
@@ -45,7 +46,7 @@ int main (int argc, char* argv[]){
     delete(mininimunOSRequerimentsReader);
     delete(specifications);
     delete(jvmParameters);
-    delete(splash);
+    jvmLauncher->create_jvm(jvmParams);
 
   }
 

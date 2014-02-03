@@ -15,3 +15,7 @@
 Makefile
 moc*
 build-test
+/java_app_example/nbproject
+/java_app_example/build/
+/java_app_example/*.xml
+/java_app_example/*.mf
