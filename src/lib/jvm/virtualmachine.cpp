@@ -1,8 +1,18 @@
 #include "virtualmachine.h"
 
-VirtualMachine::VirtualMachine(){}
+VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
+  jvmParameters = new JvmParameters(currentOs);
+  jvmArgs = jvmParameters->get();
+  m_minimunJREVersion = minimunJavaVersion;
+}
 
-void VirtualMachine::create_jvm(QStringList &jvmArgs){
+void VirtualMachine::start(){
+  create_jvm();
+  evaluateJavaVersion();
+  invoke("MainWindow","main");
+}
+
+void VirtualMachine::create_jvm(){
   static JavaVMOption *options=NULL;
   int noOfOptions = 0;
   noOfOptions=jvmArgs.size();
@@ -25,25 +35,60 @@ void VirtualMachine::create_jvm(QStringList &jvmArgs){
       exit(1);
   }else{
     free(options);
-    invoke_class();
   }
 }
 
-void VirtualMachine::invoke_class() {
+void VirtualMachine::invoke(const char* javaClass,const char* method) {
   jclass cls;
   jmethodID javaMethod;
   jobjectArray applicationArgs;
   applicationArgs = env->NewObjectArray(0, env->FindClass("java/lang/String"), NULL);
   //class and main method
-  cls = env->FindClass("MainWindow");
+  cls = env->FindClass(javaClass);
   if (cls == 0) qDebug()<<"Sorry, I can't find the class"; //In case that class not exist
   //call to main method
-  javaMethod = env->GetStaticMethodID(cls, "main", "([Ljava/lang/String;)V");
+  javaMethod = env->GetStaticMethodID(cls, method, "([Ljava/lang/String;)V");
   env->CallStaticVoidMethod(cls, javaMethod, applicationArgs); //Call to the method
 }
 
-//By default the jvm is autodestroyed by default when the
+QString VirtualMachine::getJvmVersion(){
+  QString javaVersion;
+  jclass systemClass = env->FindClass("java/lang/System");
+  jmethodID getPropertyMethod = env->GetStaticMethodID(systemClass, "getProperty",
+                                                      "(Ljava/lang/String;)Ljava/lang/String;");
+  jstring propertyName = env->NewStringUTF("java.version");
+  jstring value = (jstring) env->CallStaticObjectMethod(systemClass,
+                                                        getPropertyMethod,
+                                                        propertyName);
+  //parsing the version
+  javaVersion = QString(env->GetStringUTFChars(value, NULL));
+  //textArray.at[0]=version of java
+  //textArray.at[1]=version of java update
+  return javaVersion.split("_").at(0);
+}
+
+//By default the jvm is destroyed when the
 //java application is exitted, but it can be needed in the future
 void VirtualMachine::destroy_jvm(){
   jvm->DestroyJavaVM();
+}
+
+void VirtualMachine::evaluateJavaVersion(){
+  QStringList minimunJREVersion = m_minimunJREVersion.toString().split(".");
+  QString currentJREVersion = getJvmVersion();
+  QStringList currentJREVersionList = currentJREVersion.split(".");
+  for (int i = 0; i < minimunJREVersion.size();i++){
+    if(minimunJREVersion.at(i).toInt() > currentJREVersionList.at(i).toInt()){
+      QMessageBox errorDialog;
+      errorDialog.setText("Error, java version running "+currentJREVersion+
+                        ", minimun java version required "+m_minimunJREVersion.toString());
+      errorDialog.setMinimumWidth(400);
+      errorDialog.setMinimumHeight(300);
+      errorDialog.setWindowTitle("Launcher");
+      qDebug()<<"Java version not supported";
+      errorDialog.exec();
+      exit(1);
+    }
+  }
+
 }
