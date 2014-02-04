@@ -4,10 +4,15 @@ DEPENDPATH += . src src/graphics
 CONFIG += app
 
 linux{
-  INCLUDEPATH += $$(JDK_HOME)/include
-  INCLUDEPATH += $$(JDK_HOME)/include/linux
-  LIBS += -L$$(JAVA_HOME)/lib/amd64/server -ljvm
-  LIBS += -L$$(JAVA_HOME)/lib/i386/client -ljvm
+  INCLUDEPATH += $$(JAVA_HOME)/include
+  INCLUDEPATH += $$(JAVA_HOME)/include/linux
+  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
+  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
+}else:mac{
+  INCLUDEPATH += $$(JAVA_HOME)/include
+  INCLUDEPATH += $$(JAVA_HOME)/include/darwin
+  LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server" -ljvm
+  LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/client" -ljvm
 }
 
 #We need specify what classes will be available for each
