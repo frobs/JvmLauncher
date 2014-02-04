@@ -7,6 +7,8 @@ SplashScreen* SplashScreen::getInstance(){
     QPixmap image(PATH_TO_SPLASHSCREEN_IMAGE);
     MySplash = new SplashScreen();
     MySplash->setPixmap(image);
+    //we add to the default windows flags of QSplashScreen a new flag
+    MySplash->setWindowFlags(MySplash->windowFlags() | Qt::WindowStaysOnTopHint);
   }
   return MySplash;
 }
