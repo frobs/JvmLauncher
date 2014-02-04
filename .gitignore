@@ -19,3 +19,6 @@ build-test
 /java_app_example/build/
 /java_app_example/*.xml
 /java_app_example/*.mf
+*.xcodeproj
+.DS_Store
+Info.plist
