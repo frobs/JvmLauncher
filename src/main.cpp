@@ -16,7 +16,9 @@ int main (int argc, char* argv[]){
   splash = SplashScreen::getInstance();
   SplashScreen::setSplashMessage(QString("Launching Launcher"));
   splash->show();
+  app.processEvents();
 
+  SplashScreen::setSplashMessage(QString("Validating system specifications"));
   OSRuntime* operativeSystemRuntimeChecker;
   ConfigurationFile* mininimunOSRequerimentsReader;
   SystemSpecifications* specifications;
@@ -37,7 +39,7 @@ int main (int argc, char* argv[]){
     delete(operativeSystemRuntimeChecker);
     delete(mininimunOSRequerimentsReader);
     delete(specifications);
-
+    SplashScreen::setSplashMessage(QString("Launching java virtual machine"));
     jvmLauncher = new VirtualMachine(currentOs,minimunOSRequerimentsHash["jre_version"]);
     jvmLauncher->start();
 

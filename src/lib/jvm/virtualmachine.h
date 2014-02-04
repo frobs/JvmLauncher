@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QDebug>
+#include "src/graphics/splashscreen.h"
 #include "src/lib/utils/qvariantlistutils.h"
 #include "src/lib/jvm/jvmparameters.h"
 
@@ -21,6 +22,7 @@ class VirtualMachine{
     void evaluateJavaVersion();
     void destroy_jvm();
     QString getJvmVersion();
+    QSplashScreen* splash;
     QStringList jvmArgs;
     QVariant m_minimunJREVersion;
     JvmParameters* jvmParameters;

@@ -4,6 +4,7 @@ VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
   jvmParameters = new JvmParameters(currentOs);
   jvmArgs = jvmParameters->get();
   m_minimunJREVersion = minimunJavaVersion;
+  splash = SplashScreen::getInstance();
 }
 
 void VirtualMachine::start(){
@@ -48,7 +49,9 @@ void VirtualMachine::invoke(const char* javaClass,const char* method) {
   if (cls == 0) qDebug()<<"Sorry, I can't find the class"; //In case that class not exist
   //call to main method
   javaMethod = env->GetStaticMethodID(cls, method, "([Ljava/lang/String;)V");
+  SplashScreen::setSplashMessage(QString("Launching java application"));
   env->CallStaticVoidMethod(cls, javaMethod, applicationArgs); //Call to the method
+  splash->close();
 }
 
 QString VirtualMachine::getJvmVersion(){
@@ -90,5 +93,4 @@ void VirtualMachine::evaluateJavaVersion(){
       exit(1);
     }
   }
-
 }
