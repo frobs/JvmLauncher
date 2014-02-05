@@ -4,7 +4,6 @@
 #include <QVariant>
 #include <sys/utsname.h>
 #include <sys/types.h>
-#include <sys/sysinfo.h>
 
 class Unix{
 public:

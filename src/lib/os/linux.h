@@ -2,6 +2,7 @@
 #define LINUX_H
 
 #include "src/lib/os/unix.h"
+#include <sys/sysinfo.h>
 #include "src/lib/os/multios.h"
 
 class Linux: public Unix,public MultiOs{

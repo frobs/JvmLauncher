@@ -2,9 +2,7 @@
 
 MultiOs::MultiOs(){}
 
-MultiOs::~MultiOs(){
-  delete(regs);
-}
+MultiOs::~MultiOs(){}
 
 QVariant MultiOs::getScreenWidth(){
   return qApp->desktop()->width();
