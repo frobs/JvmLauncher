@@ -12,11 +12,22 @@ void LinuxSpecifications::getRuntimeSystemSpecifications(){
   runtimeSystemSpecifications["total_ram"] = systemSpecificationsChecker->getTotalRam();
   runtimeSystemSpecifications["screen_width"] = systemSpecificationsChecker->getScreenWidth();
   runtimeSystemSpecifications["screen_height"] = systemSpecificationsChecker->getScreenHeight();
-  runtimeSystemSpecifications[getRuntimeDistribution()] = systemSpecificationsChecker->getOsVersionNumber();
+  runtimeSystemSpecifications[getRuntimeDistribution()] = formatOsVersionNumber(systemSpecificationsChecker->getOsVersionNumber().toString);
   validate();
 }
 
 QString LinuxSpecifications::getRuntimeDistribution(){
   if (systemSpecificationsChecker->getFullOsVersion().toString().contains("Ubuntu")) return QString("ubuntu_version");
   return QString("kernel_version");
+}
+
+QVariantList LinuxSpecifications::formatOsVersionNumber(QString version){
+  QVariantList formattedMajorAndMinor;
+  QStringList majorAndMinor;
+  majorAndMinor = version.split("-").at(0).split(".");
+  foreach (QString value, majorAndMinor) {
+      formattedMajorAndMinor.append(value.toInt());
+  }
+  return formattedMajorAndMinor;
+
 }

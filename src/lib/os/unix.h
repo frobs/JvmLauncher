@@ -2,6 +2,7 @@
 #define UNIX_H
 
 #include <QVariant>
+#include <QVariantList>
 #include <sys/utsname.h>
 #include <sys/types.h>
 

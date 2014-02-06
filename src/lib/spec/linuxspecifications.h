@@ -12,6 +12,7 @@ class LinuxSpecifications : public SystemSpecifications{
     void getRuntimeSystemSpecifications();
     Linux* systemSpecificationsChecker;
     QString getRuntimeDistribution(); 
+    QVariantList formatOsVersionNumber(QString version);
   };
 
 #endif // LINUXSPECIFICATIONS_H

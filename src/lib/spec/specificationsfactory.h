@@ -10,10 +10,14 @@
   #include "src/lib/spec/linuxspecifications.h"
 #endif
 
+#ifdef Q_OS_MACX
+  #include "src/lib/spec/macspecifications.h"
+#endif
+
 class SpecificationsFactory{
   public:
     SpecificationsFactory();
-    static SystemSpecifications* specFactory(QString type,QVariantHash minimunSystemSpecifications);
+    static SystemSpecifications* specFactory(QVariantHash minimunSystemSpecifications);
 };
 
 #endif // SPECIFICATIONSFACTORY_H
