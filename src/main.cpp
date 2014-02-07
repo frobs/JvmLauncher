@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include <QString>
+#include <QDebug>
 #include "src/graphics/splashscreen.h"
 #include "src/lib/os/osruntime.h"
 #include "src/lib/utils/configurationfile.h"
@@ -31,9 +32,8 @@ int main (int argc, char* argv[]){
   currentOs = operativeSystemRuntimeChecker->getOSRuntime();
   mininimunOSRequerimentsReader = new ConfigurationFile(QString(PATH_TO_MINIMUN_SYSTEM_REQUERIMENTS_FILE));
   minimunOSRequerimentsHash = mininimunOSRequerimentsReader->loadGroupKeyValue(currentOs);
-  specifications = SpecificationsFactory::specFactory(currentOs,minimunOSRequerimentsHash);
+  specifications = SpecificationsFactory::specFactory(minimunOSRequerimentsHash);
   systemSpecificationsAreValidated = specifications->isValid();
-
   //If the launcher came here all system specifications have been validated
   if (systemSpecificationsAreValidated){
     delete(operativeSystemRuntimeChecker);

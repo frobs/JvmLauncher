@@ -1,4 +1,5 @@
 #include "virtualmachine.h"
+#include <QDebug>
 
 VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
   jvmParameters = new JvmParameters(currentOs);
@@ -7,10 +8,13 @@ VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
   splash = SplashScreen::getInstance();
 }
 
-void VirtualMachine::start(){
+void VirtualMachine::run(){
   create_jvm();
   evaluateJavaVersion();
+  //If your main class is inside a  package you must add
+  //the package before main class name on call to invoke()
   invoke("MainWindow","main");
+  destroy_jvm();
 }
 
 void VirtualMachine::create_jvm(){
@@ -46,8 +50,11 @@ void VirtualMachine::invoke(const char* javaClass,const char* method) {
   applicationArgs = env->NewObjectArray(0, env->FindClass("java/lang/String"), NULL);
   //class and main method
   cls = env->FindClass(javaClass);
-  if (cls == 0) qDebug()<<"Sorry, I can't find the class"; //In case that class not exist
-  //call to main method
+  if (cls == 0){
+    qDebug()<<"Sorry, I can't find the class"; //In case that class not exist
+    exit(1);
+  }
+      //call to main method
   javaMethod = env->GetStaticMethodID(cls, method, "([Ljava/lang/String;)V");
   SplashScreen::setSplashMessage(QString("Launching java application"));
   env->CallStaticVoidMethod(cls, javaMethod, applicationArgs); //Call to the method

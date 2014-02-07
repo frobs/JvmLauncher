@@ -8,15 +8,20 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QDebug>
+#include <QThread>
 #include "src/graphics/splashscreen.h"
 #include "src/lib/utils/qvariantlistutils.h"
 #include "src/lib/jvm/jvmparameters.h"
 
-class VirtualMachine{
+//We need that jni launcher run in a QThread separated from main
+//thread, if we use the main thread for launch  the jvm,
+//a error that doesn't show any trace occur and the java app
+//can't be launched
+class VirtualMachine: public QThread{
   public:
     VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion);
-    void start();
   private:
+    void run();
     void invoke(const char* javaClass,const char* javaMethod);
     void create_jvm();
     void evaluateJavaVersion();
