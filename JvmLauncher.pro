@@ -3,21 +3,50 @@ TEMPLATE = app
 DEPENDPATH += . src src/graphics
 CONFIG += app
 
-linux{
-  INCLUDEPATH += $$(JAVA_HOME)/include
-  INCLUDEPATH += $$(JAVA_HOME)/include/linux
-  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
-  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
-}else:mac{
+#We need specify what classes will be available for each
+#operative system if we include a header of Linux and we
+#are compiling in Windows, the universe explodes.
+
+#--------------LINUX--------------
+#For some reason this condition works with message and other commands
+#but doesn't work for HEADERS and SOURCES
+unix:!macx{
+#  INCLUDEPATH += $$(JAVA_HOME)/include
+#  INCLUDEPATH += $$(JAVA_HOME)/include/linux
+#  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
+#  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
+
+#  HEADERS += \
+#    src/lib/spec/linuxspecifications.h \
+#    src/lib/os/linux.h
+#  SOURCES += \
+#    src/lib/spec/linuxspecifications.cpp \
+#    src/lib/os/linux.cpp
+}
+
+#--------------MAC--------------
+macx{
   INCLUDEPATH += $$(JAVA_HOME)/include
   INCLUDEPATH += $$(JAVA_HOME)/include/darwin
   LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server" -ljvm
   LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/client" -ljvm
+  SOURCES+= \
+    src/lib/os/mac.cpp \
+    src/lib/spec/macspecifications.cpp
+  HEADERS += \
+    src/lib/os/mac.h \
+    src/lib/spec/macspecifications.h
 }
 
-#We need specify what classes will be available for each
-#operative system if we include a header of Linux and we
-#are compiling in Windows, the universe explodes.
+#--------------UNIX--------------
+unix{
+  HEADERS += \
+    src/lib/os/unix.h
+  SOURCES += \
+    src/lib/os/unix.cpp
+}
+
+#--------------ALL OPERATIVE SYSTEM--------------
 HEADERS += \
   src/graphics/splashscreen.h \
   src/lib/utils/qtresourcesfileconstants.h \
@@ -27,22 +56,10 @@ HEADERS += \
   src/lib/spec/systemspecifications.h \
   src/lib/utils/runtimeconstants.h \
   src/lib/os/multios.h \
-    src/lib/jvm/jvmparameters.h \
-    src/lib/utils/qvariantlistutils.h \
-    src/lib/jvm/virtualmachine.h
-  win32{
+  src/lib/jvm/jvmparameters.h \
+  src/lib/utils/qvariantlistutils.h \
+  src/lib/jvm/virtualmachine.h
 
-  }else{
-    HEADERS += \
-      src/lib/os/unix.h
-    mac{
-
-    }else{
-      HEADERS += \
-        src/lib/spec/linuxspecifications.h \
-        src/lib/os/linux.h
-    }
-  }
 SOURCES += \
   src/main.cpp \
   src/graphics/splashscreen.cpp \
@@ -51,21 +68,8 @@ SOURCES += \
   src/lib/spec/specificationsfactory.cpp \
   src/lib/spec/systemspecifications.cpp \
   src/lib/os/multios.cpp \
-    src/lib/jvm/jvmparameters.cpp \
-    src/lib/utils/qvariantlistutils.cpp \
-    src/lib/jvm/virtualmachine.cpp
-  win32{
-
-  }else{
-    SOURCES += \
-      src/lib/os/unix.cpp
-    mac{
-
-    }else{
-      SOURCES += \
-        src/lib/spec/linuxspecifications.cpp \
-        src/lib/os/linux.cpp
-    }
-  }
+  src/lib/jvm/jvmparameters.cpp \
+  src/lib/utils/qvariantlistutils.cpp \
+  src/lib/jvm/virtualmachine.cpp
 
 RESOURCES += QtResourcesFile.qrc
