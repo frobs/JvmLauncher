@@ -52,6 +52,8 @@ A c++/qt multiplatform launcher for jvm applications
 
 > > > JAVA_HOME environment variable with the path to JDK
 
+> > > Shared libraries of JRE accesible to the system, i.e. using LD_LIBRARY__PATH
+
 > > > If you see this error when import project:
 
 > > >Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.

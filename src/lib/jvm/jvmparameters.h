@@ -11,6 +11,10 @@
   #include "src/lib/os/linux.h"
 #endif
 
+#ifdef Q_OS_MACX
+  #include "src/lib/os/mac.h"
+#endif
+
 using namespace std;
 class JvmParameters{
   public:
@@ -34,6 +38,9 @@ class JvmParameters{
     QString formatXss(QString parameterToRefactor);
     #ifdef Q_OS_LINUX
       Linux* operativeSystem = new Linux();
+    #endif
+    #ifdef Q_OS_MACX
+      Mac* operativeSystem = new Mac();
     #endif
 };
 
