@@ -25,7 +25,6 @@ class VirtualMachine: public QThread{
     void invoke(const char* javaClass,const char* javaMethod);
     void create_jvm();
     void evaluateJavaVersion();
-    void destroy_jvm();
     QString getJvmVersion();
     QSplashScreen* splash;
     QStringList jvmArgs;

@@ -2,6 +2,11 @@
 *.slo
 *.lo
 *.o
+*.BACKUP.*
+*.LOCAL.*
+*.BASE.*
+*.REMOTE.*
+*.orig
 
 # Compiled Dynamic libraries
 *.so

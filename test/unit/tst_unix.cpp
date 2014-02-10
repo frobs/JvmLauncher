@@ -11,7 +11,7 @@ void UnixTest::OsArchitectureIsNotEmpty(){
 }
 
 void UnixTest::OsVersionNumberIsNotEmpty(){
-  QVERIFY2(!UnixOperativeSystem->getOsVersionNumber().toList().isEmpty(), "The OS version number received is empty");
+  QVERIFY2(!UnixOperativeSystem->getOsVersionNumber().isNull(), "The OS version number received is empty");
 }
 
 void UnixTest::OsFullVersionIsNotEmpty(){

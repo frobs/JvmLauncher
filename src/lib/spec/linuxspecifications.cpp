@@ -12,7 +12,8 @@ void LinuxSpecifications::getRuntimeSystemSpecifications(){
   runtimeSystemSpecifications["total_ram"] = systemSpecificationsChecker->getTotalRam();
   runtimeSystemSpecifications["screen_width"] = systemSpecificationsChecker->getScreenWidth();
   runtimeSystemSpecifications["screen_height"] = systemSpecificationsChecker->getScreenHeight();
-  runtimeSystemSpecifications[getRuntimeDistribution()] = formatOsVersionNumber(systemSpecificationsChecker->getOsVersionNumber().toString);
+  QString rawOsVersion = systemSpecificationsChecker->getOsVersionNumber().toString();
+  runtimeSystemSpecifications[getRuntimeDistribution()] = formatOsVersionNumber(rawOsVersion);
   validate();
 }
 
@@ -28,6 +29,7 @@ QVariantList LinuxSpecifications::formatOsVersionNumber(QString version){
   foreach (QString value, majorAndMinor) {
       formattedMajorAndMinor.append(value.toInt());
   }
+
   return formattedMajorAndMinor;
 
 }

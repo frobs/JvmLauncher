@@ -3,6 +3,7 @@
 
 #include "src/lib/spec/systemspecifications.h"
 #include "src/lib/os/linux.h"
+#include <QVariantList>
 
 class LinuxSpecifications : public SystemSpecifications{
   public:

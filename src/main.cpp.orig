@@ -1,8 +1,11 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include <QString>
+<<<<<<< Updated upstream
 #include <QDebug>
+=======
 #include <QThread>
+>>>>>>> Stashed changes
 #include "src/graphics/splashscreen.h"
 #include "src/lib/os/osruntime.h"
 #include "src/lib/utils/configurationfile.h"
@@ -19,7 +22,9 @@ int main (int argc, char* argv[]){
   SplashScreen::setSplashMessage(QString("Launching Launcher"));
   splash->show();
   app.processEvents();
+  QThread::sleep(3);
   SplashScreen::setSplashMessage(QString("Validating system specifications"));
+  QThread::sleep(3);
   OSRuntime* operativeSystemRuntimeChecker;
   ConfigurationFile* mininimunOSRequerimentsReader;
   SystemSpecifications* specifications;
@@ -40,6 +45,7 @@ int main (int argc, char* argv[]){
     delete(mininimunOSRequerimentsReader);
     delete(specifications);
     SplashScreen::setSplashMessage(QString("Creating java virtual machine"));
+    QThread::sleep(3);
     jvmLauncher = new VirtualMachine(currentOs,minimunOSRequerimentsHash["jre_version"]);
     jvmLauncher->start();
 

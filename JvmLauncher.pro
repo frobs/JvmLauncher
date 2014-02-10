@@ -11,17 +11,17 @@ CONFIG += app
 #For some reason this condition works with message and other commands
 #but doesn't work for HEADERS and SOURCES
 unix:!macx{
-#  INCLUDEPATH += $$(JAVA_HOME)/include
-#  INCLUDEPATH += $$(JAVA_HOME)/include/linux
-#  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
-#  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
+  INCLUDEPATH += $$(JAVA_HOME)/include
+  INCLUDEPATH += $$(JAVA_HOME)/include/linux
+  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
+  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
 
-#  HEADERS += \
-#    src/lib/spec/linuxspecifications.h \
-#    src/lib/os/linux.h
-#  SOURCES += \
-#    src/lib/spec/linuxspecifications.cpp \
-#    src/lib/os/linux.cpp
+  HEADERS += \
+    src/lib/spec/linuxspecifications.h \
+    src/lib/os/linux.h
+  SOURCES += \
+    src/lib/spec/linuxspecifications.cpp \
+    src/lib/os/linux.cpp
 }
 
 #--------------MAC--------------
