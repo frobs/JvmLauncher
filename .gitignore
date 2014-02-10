@@ -27,3 +27,5 @@ build-test
 *.xcodeproj
 .DS_Store
 Info.plist
+testUnitJvmLauncher
+qrc_*

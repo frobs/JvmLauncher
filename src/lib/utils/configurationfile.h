@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QString>
 #include <QVariantList>
+#include <QStringList>
 #include <QVariantHash>
 #include <typeinfo>
 

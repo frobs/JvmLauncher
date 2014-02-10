@@ -1,0 +1,9 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+before_install:
+  - yes | sudo add-apt-repository ppa:beineri/opt-qt52-beta
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq zlib1g-dev qt52base qt52declarative
+script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher

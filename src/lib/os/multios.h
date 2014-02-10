@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QVariant>
 #include <stdint.h>
 #ifdef _WIN32
   #include <limits.h>
