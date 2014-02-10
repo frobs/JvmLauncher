@@ -3,6 +3,9 @@ compiler:
   - gcc
   - clang
 before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
   - yes | sudo add-apt-repository ppa:beineri/opt-qt52
   - sudo apt-get update -qq
   - sudo apt-get install -qq zlib1g-dev qt52base qt52declarative
