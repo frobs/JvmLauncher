@@ -14,7 +14,6 @@ void VirtualMachine::run(){
   //If your main class is inside a  package you must add
   //the package before main class name on call to invoke()
   invoke("MainWindow","main");
-  destroy_jvm();
 }
 
 void VirtualMachine::create_jvm(){
@@ -59,6 +58,7 @@ void VirtualMachine::invoke(const char* javaClass,const char* method) {
   SplashScreen::setSplashMessage(QString("Launching java application"));
   env->CallStaticVoidMethod(cls, javaMethod, applicationArgs); //Call to the method
   splash->close();
+  //By default the jvm is destroyed when the java application exit
 }
 
 QString VirtualMachine::getJvmVersion(){
@@ -75,12 +75,6 @@ QString VirtualMachine::getJvmVersion(){
   //textArray.at[0]=version of java
   //textArray.at[1]=version of java update
   return javaVersion.split("_").at(0);
-}
-
-//By default the jvm is destroyed when the
-//java application is exitted, but it can be needed in the future
-void VirtualMachine::destroy_jvm(){
-  jvm->DestroyJavaVM();
 }
 
 void VirtualMachine::evaluateJavaVersion(){
