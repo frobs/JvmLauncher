@@ -22,6 +22,7 @@ unix:!macx{
   SOURCES += \
     src/lib/spec/linuxspecifications.cpp \
     src/lib/os/linux.cpp
+
 }
 
 #--------------MAC--------------

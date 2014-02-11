@@ -11,7 +11,6 @@
 
 
 int main (int argc, char* argv[]){
-  //TO-DO Create a QCoreApplication instead of QApplication if SplashScreen is disabled
   QApplication app(argc,argv);
   //We show the splash at the beginning of time
   QSplashScreen* splash;

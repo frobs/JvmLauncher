@@ -11,12 +11,9 @@ VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
 void VirtualMachine::run(){
   create_jvm();
   evaluateJavaVersion();
-<<<<<<< Updated upstream
   //If your main class is inside a  package you must add
   //the package before main class name on call to invoke()
-=======
   SplashScreen::setSplashMessage("Launching java application");
->>>>>>> Stashed changes
   invoke("MainWindow","main");
 }
 

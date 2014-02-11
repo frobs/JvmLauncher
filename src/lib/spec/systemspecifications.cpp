@@ -1,5 +1,4 @@
 #include "systemspecifications.h"
-#include <QDebug>
 
 SystemSpecifications::SystemSpecifications(){
  validated = false;
@@ -17,7 +16,6 @@ bool SystemSpecifications::isValid(){
 }
 
 void SystemSpecifications::validate(){
-  qDebug()<<runtimeSystemSpecifications;
   foreach(QString key, runtimeSystemSpecifications.keys()){
     //We separate simple integers and QVariantLists from QHash
     if(runtimeSystemSpecifications[key].canConvert(QVariant::Int)){
