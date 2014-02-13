@@ -4,6 +4,8 @@ compiler:
   - clang
 jdk:
   - oraclejdk7
+rvm:
+  - jruby-19mode
 env:
   global:
     - "ARTIFACTS_AWS_REGION=us-east-1"
@@ -18,7 +20,6 @@ before_install:
   - sudo apt-get update -qq
 install:
   - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative
-  -  gem install faraday_middleware
   - gem install travis-artifacts
 script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
 after_success:
