@@ -1,4 +1,4 @@
-QT += widgets core gui
+QT += core gui widgets
 TEMPLATE = app
 DEPENDPATH += . src src/graphics
 CONFIG += app
@@ -8,9 +8,16 @@ CONFIG += app
 #are compiling in Windows, the universe explodes.
 
 #--------------LINUX--------------
-#For some reason this condition works with message and other commands
-#but doesn't work for HEADERS and SOURCES
 unix:!macx{
+  release { DESTDIR = linuxRelease }
+  dynamicLibs.path += $$DESTDIR/libs
+  dynamicLibs.files += \
+    $$(QT_LIBRARY_PATH)/*Core.so \
+    $$(QT_LIBRARY_PATH)/*Gui.so
+
+  compress.path += '.'
+  compress.extra += 'tar czfv linuxRelease.tar.gz linuxRelease/'
+
   INCLUDEPATH += $$(JAVA_HOME)/include
   INCLUDEPATH += $$(JAVA_HOME)/include/linux
   LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
@@ -74,3 +81,4 @@ SOURCES += \
   src/lib/jvm/virtualmachine.cpp
 
 RESOURCES += QtResourcesFile.qrc
+INSTALLS += dynamicLibs compress
