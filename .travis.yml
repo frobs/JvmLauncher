@@ -17,4 +17,6 @@ after_success:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
   - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
+  - make clean
+  - rm Makefile
   - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
