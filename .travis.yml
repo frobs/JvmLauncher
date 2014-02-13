@@ -19,14 +19,15 @@ before_install:
 install:
   - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative
   - gem install travis-artifacts
-script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
-after_success:
+before script:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
   - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
+script: 
+  - source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
   - make clean
   - rm Makefile
-script: source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
+  - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
 after_failure: # this will of course run only on failure
   - travis-artifacts upload --path debug/debug.log
 after_success: # and this only on success
