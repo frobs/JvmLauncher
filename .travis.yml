@@ -18,8 +18,8 @@ before_install:
   - sudo apt-get update -qq
 install:
   - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative
+  - gem update --system
   - gem install travis-artifacts
-  - gem install faraday_middleware
 before_script:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
   - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
