@@ -4,6 +4,18 @@ JvmParameters::JvmParameters(QString& platform){
   m_platform = platform;
   configFileReader = new ConfigurationFile(PATH_TO_JVM_PARAMETERS_FILE);
   generateJvmParameters();
+  initilizeOperativeSystemObject();
+}
+
+//We need initialize operativeSystem in cpp file, for fix a bug with conpilation on travis
+void JvmParameters::initilizeOperativeSystemObject(){
+  #ifdef Q_OS_LINUX
+    operativeSystem = new Linux();
+  #endif
+
+  #ifdef Q_OS_MACX
+    operativeSystem = new Mac();
+  #endif
 }
 
 JvmParameters::~JvmParameters(){

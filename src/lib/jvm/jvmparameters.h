@@ -32,15 +32,16 @@ class JvmParameters{
     void copyStaticSettingsOSArchitectureDependent();
     void generateJvmParameters();
     void generateDynamicParameters();
+    void initilizeOperativeSystemObject();
     QString formatClassPath(QString classpathFileConfigurationValue);
     QString formatSse(QString parameterToRefactor);
     QString formatParallelThreads(QString parameterToRefactor);
     QString formatXss(QString parameterToRefactor);
     #ifdef Q_OS_LINUX
-      Linux* operativeSystem = new Linux();
+      Linux* operativeSystem;
     #endif
     #ifdef Q_OS_MACX
-      Mac* operativeSystem = new Mac();
+      Mac* operativeSystem;
     #endif
 };
 
