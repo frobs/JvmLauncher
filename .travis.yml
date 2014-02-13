@@ -18,8 +18,7 @@ before_install:
   - sudo apt-get update -qq
 install:
   - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative
-before_script:
-  - "gem install travis-artifacts"
+  - gem install travis-artifacts
 script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
 after_success:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
@@ -29,6 +28,6 @@ after_success:
   - rm Makefile
   - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
 after_failure: # this will of course run only on failure
-  - "travis-artifacts upload --path debug/debug.log"
+  - travis-artifacts upload --path debug/debug.log
 after_success: # and this only on success
-  - "travis-artifacts upload --path linuxRelease.tar.gz"
+  - travis-artifacts upload --path linuxRelease.tar.gz
