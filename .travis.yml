@@ -4,6 +4,12 @@ compiler:
   - clang
 jdk:
   - oraclejdk7
+env:
+  global:
+    - "ARTIFACTS_AWS_REGION=us-east-1"
+    - "ARTIFACTS_S3_BUCKET=jvm_launcher_repo"
+    - secure: "bUWVI/qd2FujM1ZVMKq6uTRVpSZWI4TZG3uM7tSKQ5h3+rryUPfn2A/RpsFHqTtNsflGc9iIdTJqP2KS8UOjZB/c5aD+HOtSga70k6t0I7FWsss0caO/5r592x58I6wB4plOcNQQouE2RrJCKxdnKR6Z8CrXokO8UtpBMN5xTBM="
+    - secure: "W/FpbxLRoAONuET53bJgg1vh7GUh15ytyRUQuUuOsJPUjMVd6OugFy6JFmXCBLYwPVANILCsjhi4SnTFS0od+1n6NDlROEcF+L3vVetmoU02mNHTnVPHpqrv/sEcDJ3ltETG/gqphQaYhSlB9rFCs3b0WodvyNwURxWgN5R5npU="
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -12,6 +18,8 @@ before_install:
   - sudo apt-get update -qq
 install:
   - sudo apt-get install -qq zlib1g-dev qt52base qt52declarative
+before_script:
+  - "gem install travis-artifacts"
 script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
 after_success:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
@@ -19,4 +27,12 @@ after_success:
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
   - make clean
   - rm Makefile
-  - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
+
+script: source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
+
+after_script:
+  - "travis-artifacts upload --path logs --path a/long/nested/path:short_alias"
+after_failure: # this will of course run only on failure
+  - "travis-artifacts upload --path debug/debug.log"
+after_success: # and this only on success
+  - "travis-artifacts upload --path linuxRelease.tar.gz"
