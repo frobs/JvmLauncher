@@ -15,4 +15,5 @@ install:
 script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
 after_success:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
-  - sudo find / -name libjvm.so
+  - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+  - qmake JvmLauncher.pro && make install
