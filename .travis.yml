@@ -17,7 +17,9 @@ before_install:
   - yes | sudo add-apt-repository ppa:beineri/opt-qt52
   - sudo apt-get update -qq
 install:
-  - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative
+  - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative  
+  #Error: `lookup middleware': :json is not registered on Faraday::Response (Faraday::Error)
+  #Solution: Specify gem versions
   - gem install faraday -v 0.8.0
   - gem install faraday_middleware -v 0.9.0
   - gem install travis-artifacts -v 0.2.2
