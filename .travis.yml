@@ -1,6 +1,5 @@
 language: cpp
 compiler:
-  - gcc
   - clang
 jdk:
   - oraclejdk7
@@ -19,11 +18,12 @@ before_install:
 install:
   - sudo apt-get install -qq --force-yes zlib1g-dev qt52base qt52declarative  
   #Error: `lookup middleware': :json is not registered on Faraday::Response (Faraday::Error)
-  #Solution: Specify gem versions
+  #Solution: Specify THIS gem versions
   - gem install faraday -v 0.8.0
   - gem install faraday_middleware -v 0.9.0
   - gem install travis-artifacts -v 0.2.2
 before_script:
+  - export OPERATIVE_SYSTEM = LINUX 
   - export QT_LIBRARY_PATH=/opt/qt52/lib
   - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
@@ -38,3 +38,5 @@ after_failure: # this will of course run only on failure
   - travis-artifacts upload --path debug/debug.log
 after_success: # and this only on success
   - travis-artifacts upload --path linuxRelease.tar.gz
+after_test:
+  - travis-artifacts upload --target-path release/$OPERATIVE_SYSTEM/$TRAVIS_BUILD_ID/
