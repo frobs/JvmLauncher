@@ -31,6 +31,7 @@ script:
   - make clean
   - rm Makefile
   - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
+  - mv linuxRelease.tar.gz linux_64_release.tar.gz
 after_script:
   - travis-artifacts upload --path logs --path a/long/nested/path:short_alias
 after_failure: # this will of course run only on failure
