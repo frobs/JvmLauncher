@@ -4,8 +4,6 @@ compiler:
   - clang
 jdk:
   - oraclejdk7
-rvm:
-  - jruby-19mode
 env:
   global:
     - "ARTIFACTS_AWS_REGION=us-east-1"
@@ -28,7 +26,7 @@ after_success:
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
   - make clean
   - rm Makefile
-  - source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
+script: source /opt/qt52/bin/qt52-env.sh && qmake JvmLauncher.pro && make install
 after_failure: # this will of course run only on failure
   - travis-artifacts upload --path debug/debug.log
 after_success: # and this only on success
