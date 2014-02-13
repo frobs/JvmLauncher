@@ -36,5 +36,6 @@ after_script:
 after_failure: # this will of course run only on failure
   - travis-artifacts upload --path debug/debug.log
 after_success: # and this only on success
-  - travis-artifacts upload --target-path release/linux/$TRAVIS_BUILD_ID/X86_64/
   - travis-artifacts upload --path linuxRelease.tar.gz
+after_test:
+  - travis-artifacts upload --target-path release/linux/$TRAVIS_BUILD_ID
