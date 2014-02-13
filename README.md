@@ -3,10 +3,10 @@ JvmLauncher
 
 A c++/qt multiplatform launcher for jvm applications
 
-##Requisites:
-> ###Linux:
+#Linux:
+> ##Compilation:
 
-> > Compile:
+> > ###Requisites:
 
 > > > Qt 4.8 or 5.2.
 
@@ -14,73 +14,82 @@ A c++/qt multiplatform launcher for jvm applications
 
 > > > OpenJdk/Oracle Jdk 1.7
 
-> > Execute:
-
-> > > JRE 1.x
-
-> ###MacOs:
-
-> > Compile:
-
-> > > Qt 5.2
-
-> > > CLANG(Version installed with Qt)
-
-> > Execute:
-
-> > > JRE 1.x
-
-##Configuration:
-> ###Linux:
-> > Compile:
+> > ###Configuration:
 
 > > > Debian/Ubuntu and Qt-5.2:
 
-> > > > `apt-get install libgl-dev`
+> > > `apt-get install libgl-dev`
 
-> > > JAVA_HOME environment variable with the path to JDK
+> > > `JAVA_HOME` environment variable with the path to JDK
 
-> > Execute:
+> > > `QT_LIBRARY_PATH` environment variable with the path to qt dynamic libraries that must be copy with launcher, libQtCore.os and libQtGui.os
 
-> > > JRE_HOME environment variable with the path to JRE
+> > ###Commands:
 
-> > > Shared libraries of JRE accesible to the system, i.e. using LD_LIBRARY__PATH
- 
-> ###MacOs:
+> > > Tests:
 
-> > Compile:
+> > > > `qmake testUnit.pro`
 
-> > > JAVA_HOME environment variable with the path to JDK
+> > > > `make`
 
-> > > Shared libraries of JRE accesible to the system, i.e. using LD_LIBRARY__PATH
+> > > Launcher:
+
+> > > > `qmake JvmLauncher.pro`
+
+> > > > `make` or `make install` (if you want a tar.gz with shared libraries inside)
+
+> > > > Remember copy your application to the launcher directory with the same path that you have specified on your jvm-parameters.ini/classpath
+
+> ##Execute:
+
+> > ###Requisites:
+
+> > > JRE 1.x
+
+> > ###Configuration:
+
+> > > `JRE_HOME` environment variable with the path to JRE
+
+> > > Shared libraries of JRE accesible to the system, i.e. using `LD_LIBRARY_PATH`
+
+> > ###Commands:
+
+> > > Tests:
+
+> > > > `./testUnitJvmLauncher`
+
+> > > Launcher:
+
+> > > > `./yourLauncherName`
+
+#Mac:
+> ##Compilation:
+
+> > ###Requisites:
+
+> > > Qt 4.8 or 5.2.
+
+> > > CLANG(Version installed with Qt)
+
+> > > Oracle Jdk 1.7
+
+> > ###Configuration:
+> > > `JAVA_HOME` environment variable with the path to JDK
 
 > > > If you see this error when import project:
 
-> > >Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
+> > > Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
 
 > > > > Execute `/usr/bin/xcodebuild` and agree the license
 
 > > > > Execute on the project directory: `qmake -spec macx-xcode JvmLauncher.pro`
 
-## Compile the project:
-> ###Linux:
-> > `qmake JvmLauncher.pro`
+> ##Execute:
 
-> >` make`
+> > ###Requisites:
 
-> > Remember copy your application to the launcher directory with the same path that you have specified on your jvm-parameters.ini/classpath
+> > > JRE 1.x
 
-## Executing the compiled executable:
+> > ###Configuration:
 
-> ###Linux:
-
-> > `./JvmLauncher`
-
-##Compiling and executing the tests:
-> ###Linux:
-> > `qmake testUnit.pro`
-
-> >` make`
-
-> > `./testUnitJvmLauncher`
-
+> > > Shared libraries of JRE accesible to the system, i.e. using `DYLD_LIBRARY_PATH` 
