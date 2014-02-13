@@ -15,4 +15,4 @@ install:
 script: source /opt/qt52/bin/qt52-env.sh && qmake testUnit.pro && make && ./testUnitJvmLauncher
 after_success:
   - export QT_LIBRARY_PATH=/opt/qt52/lib
-  sudo find / -name libjvm.so
+  - sudo find / -name libjvm.so
