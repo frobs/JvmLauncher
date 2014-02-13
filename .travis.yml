@@ -23,7 +23,7 @@ install:
   - gem install faraday_middleware -v 0.9.0
   - gem install travis-artifacts -v 0.2.2
 before_script:
-  - export OPERATIVE_SYSTEM = LINUX 
+  - export OPERATIVE_SYSTEM=linux 
   - export QT_LIBRARY_PATH=/opt/qt52/lib
   - export JAVA_HOME=/usr/lib/jvm/java-7-oracle
   - export JRE_HOME=/usr/lib/jvm/java-7-oracle/jre
@@ -39,4 +39,4 @@ after_failure: # this will of course run only on failure
 after_success: # and this only on success
   - travis-artifacts upload --path linuxRelease.tar.gz
 after_test:
-  - travis-artifacts upload --target-path release/$OPERATIVE_SYSTEM/$TRAVIS_BUILD_ID/
+  - travis-artifacts upload --target-path release/$OPERATIVE_SYSTEM/$TRAVIS_BUILD_ID/X86_64/
