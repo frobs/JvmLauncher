@@ -9,7 +9,7 @@ env:
     - "ARTIFACTS_AWS_REGION=us-east-1"
     - "ARTIFACTS_S3_BUCKET=jvm_launcher_repo"
     - secure: "hZfxi//Fb9eP8ixxOmywKJSKm5J1tJHJMLDezvZhJPIBLc6NNruS2lSXhvxHVHiwsF6ZCbkjutH+tIaiRURd5DQ32lv40p3lIYufUyNuTNX2Ba3kW0cUMMVMhB9u0js0nlP4n5FB2oCxeoJj4ySlgPP7NMYtRiyxqf190z41wVo="
-    - secure: "gIXvLihTKScJyqhxabQtZC4oYbiIgq4mlb2om21GIaulUO++2eVET6rFSKTIYvJbSBItNLA2OadOsx4z3s4qxRnpsZPiHIfiqW6cxKOFgM6t2k5QZdHgpCKt4knrjusVMFgel7VQfrJqxpBfzNrSbRt5jjELc18kNyqIPXogtio="
+    - secure: "ZEme5IUKHTaE7ZUiDA8YbWd6WWEM1GQ1qb3s1w+2hcC5ItdjlPWz5FfydZZrBdtb+3ji/XoVVSRiSiXWqbdwq2fiPMxNt5u+Q6q5BR1BlaBWD1GSMgZo96iiyyd/AyHDrLLo36F/+uDtC2kicZMgkXjTkWjHnFC8+CtmubgfiO4="
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
