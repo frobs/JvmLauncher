@@ -8,6 +8,8 @@ A c++/qt multiplatform launcher for jvm applications
 
 > > ###Requisites:
 
+> > > All in 64 bits.
+
 > > > Qt 4.8 or 5.2.
 
 > > > Gcc 4.x(tested with 4.7 and 4.8) standard used c++ 99
@@ -66,6 +68,8 @@ A c++/qt multiplatform launcher for jvm applications
 > ##Compilation:
 
 > > ###Requisites:
+
+> > > All in 64 bits.
 
 > > > Qt 4.8 or 5.2.
 

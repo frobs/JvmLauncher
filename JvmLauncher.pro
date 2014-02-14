@@ -9,19 +9,17 @@ CONFIG += app
 
 #--------------LINUX--------------
 unix:!macx{
-  release { DESTDIR = linuxRelease }
+  release { DESTDIR = dist-linux_x64 }
   dynamicLibs.path += $$DESTDIR/libs
   dynamicLibs.files += \
     $$(QT_LIBRARY_PATH)/*Core.so \
     $$(QT_LIBRARY_PATH)/*Gui.so
-
   compress.path += '.'
-  compress.extra += 'tar czfv linuxRelease.tar.gz linuxRelease/'
+    compress.extra += 'tar czfv dist-linux_x64.tar.gz dist-linux_x64/'
 
   INCLUDEPATH += $$(JAVA_HOME)/include
   INCLUDEPATH += $$(JAVA_HOME)/include/linux
   LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
-  LIBS += -L$$(JRE_HOME)/lib/i386/client -ljvm
 
   HEADERS += \
     src/lib/spec/linuxspecifications.h \
