@@ -1,5 +1,4 @@
 #include "virtualmachine.h"
-#include <QDebug>
 
 VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
   jvmParameters = new JvmParameters(currentOs);

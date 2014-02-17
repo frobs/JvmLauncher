@@ -23,7 +23,6 @@ class MultiOs{
     QVariant getSseVersion();
     QVariant getCoresNum();
   private:
-    unsigned regs[4];
     void cpuID(unsigned,unsigned []);
 };
 
