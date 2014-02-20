@@ -14,6 +14,8 @@ CONFIG += app
 #How we use msvc all includes of headers on application need be refactor to be relatives
 #to the current file.
 #msvc compiler don't understand: DEPENDPATH qt macro
+#The QSplashScreen is created in one thread and close in another thread
+#this produce a error of threads on debug mode, to fix it compile on relase mode
 win32{
     release { DESTDIR = dist-windows_x86 }
     INCLUDEPATH += $$(JAVA_HOME)/include
