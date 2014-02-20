@@ -14,6 +14,10 @@
   #include "src/lib/spec/macspecifications.h"
 #endif
 
+#ifdef Q_OS_WIN
+  #include "src/lib/spec/windowsspecifications.h"
+#endif
+
 class SpecificationsFactory{
   public:
     SpecificationsFactory();

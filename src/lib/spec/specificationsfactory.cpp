@@ -13,4 +13,7 @@ SystemSpecifications* SpecificationsFactory::specFactory(QVariantHash minimunSys
   #ifdef Q_OS_MACX
     return new MacSpecifications(minimunSystemSpecifications);
   #endif
+  #ifdef Q_OS_WIN
+    return new WindowsSpecifications(minimunSystemSpecifications);
+  #endif
 }

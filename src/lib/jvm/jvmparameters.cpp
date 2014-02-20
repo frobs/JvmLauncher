@@ -16,6 +16,10 @@ void JvmParameters::initilizeOperativeSystemObject(){
   #ifdef Q_OS_MACX
     operativeSystem = new Mac();
   #endif
+
+  #ifdef Q_OS_WIN
+    operativeSystem = new Windows();
+  #endif
 }
 
 JvmParameters::~JvmParameters(){

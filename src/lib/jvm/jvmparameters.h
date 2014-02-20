@@ -14,6 +14,9 @@
 #ifdef Q_OS_MACX
   #include "src/lib/os/mac.h"
 #endif
+#ifdef Q_OS_WIN
+  #include "src/lib/os/windows.h"
+#endif
 
 using namespace std;
 class JvmParameters{
@@ -42,6 +45,9 @@ class JvmParameters{
     #endif
     #ifdef Q_OS_MACX
       Mac* operativeSystem;
+    #endif
+    #ifdef Q_OS_WIN
+      Windows* operativeSystem;
     #endif
 };
 

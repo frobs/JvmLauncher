@@ -2,7 +2,7 @@
 #include "QDebug"
 
 LinuxSpecifications::LinuxSpecifications(QVariantHash &minimunSystemRequeriments):SystemSpecifications(minimunSystemRequeriments){
-  //How this class is the result of a factory we not need call to linux factory, operative system is already discriminated
+  //How this class is the result of a factory we doesn't need call to linux factory, operative system is already discriminated
   systemSpecificationsChecker = new Linux();
   getRuntimeSystemSpecifications();
 }

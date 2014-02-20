@@ -7,6 +7,14 @@ CONFIG += app
 #operative system if we include a header of Linux and we
 #are compiling in Windows, the universe explodes.
 
+#--------------WINDOWS--------------
+win32{
+    release { DESTDIR = dist-windows_x86 }
+    INCLUDEPATH += $$(JAVA_HOME)/include
+    INCLUDEPATH += $$(JAVA_HOME)/include/win32
+    LIBS += -L"$$(JAVA_HOME)\lib\jvm.lib"
+}
+
 #--------------LINUX--------------
 unix:!macx{
   release { DESTDIR = dist-linux_x64 }
@@ -64,7 +72,9 @@ HEADERS += \
   src/lib/os/multios.h \
   src/lib/jvm/jvmparameters.h \
   src/lib/utils/qvariantlistutils.h \
-  src/lib/jvm/virtualmachine.h
+  src/lib/jvm/virtualmachine.h \
+    src/lib/os/windows.h \
+    src/lib/spec/windowsspecifications.h
 
 SOURCES += \
   src/main.cpp \
@@ -76,7 +86,9 @@ SOURCES += \
   src/lib/os/multios.cpp \
   src/lib/jvm/jvmparameters.cpp \
   src/lib/utils/qvariantlistutils.cpp \
-  src/lib/jvm/virtualmachine.cpp
+  src/lib/jvm/virtualmachine.cpp \
+    src/lib/os/windows.cpp \
+    src/lib/spec/windowsspecifications.cpp
 
 RESOURCES += QtResourcesFile.qrc
 INSTALLS += dynamicLibs compress
