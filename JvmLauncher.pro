@@ -8,11 +8,17 @@ CONFIG += app
 #are compiling in Windows, the universe explodes.
 
 #--------------WINDOWS--------------
+#On windows we use msvc because mingw not link correctly to jvm.lib and produce a:
+#undefined reference to `_imp__ JNI_GetDefaultJavaVMInitArgs@4'
+#error: undefined reference to `_imp__JNI_CreateJavaVM@12'
+#How we use msvc all includes of headers on application need be refactor to be relatives
+#to the current file.
+#msvc compiler don't understand: DEPENDPATH qt macro
 win32{
     release { DESTDIR = dist-windows_x86 }
     INCLUDEPATH += $$(JAVA_HOME)/include
     INCLUDEPATH += $$(JAVA_HOME)/include/win32
-    LIBS += -L"$$(JAVA_HOME)\lib\jvm.lib"
+    LIBS += -L"$$(JAVA_HOME)\lib" -ljvm
 }
 
 #--------------LINUX--------------
@@ -35,7 +41,6 @@ unix:!macx{
   SOURCES += \
     src/lib/spec/linuxspecifications.cpp \
     src/lib/os/linux.cpp
-
 }
 
 #--------------MAC--------------

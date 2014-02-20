@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <comutil.h>
-#include <src/lib/os/multios.h>
+#include "../os/multios.h"
 
 typedef BOOL (WINAPI *IW64PFP)(HANDLE, BOOL *);
 

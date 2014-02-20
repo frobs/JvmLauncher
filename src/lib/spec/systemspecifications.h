@@ -6,7 +6,7 @@
 #include <QVariantHash>
 #include <QVariant>
 #include <QMetaType>
-#include "src/lib/utils/qvariantlistutils.h"
+#include "../utils/qvariantlistutils.h"
 
 class SystemSpecifications{
   public:

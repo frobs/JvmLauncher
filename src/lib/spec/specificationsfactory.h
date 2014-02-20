@@ -15,7 +15,7 @@
 #endif
 
 #ifdef Q_OS_WIN
-  #include "src/lib/spec/windowsspecifications.h"
+  #include "../spec/windowsspecifications.h"
 #endif
 
 class SpecificationsFactory{

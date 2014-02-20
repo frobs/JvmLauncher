@@ -9,9 +9,9 @@
 #include <QApplication>
 #include <QDebug>
 #include <QThread>
-#include "src/graphics/splashscreen.h"
-#include "src/lib/utils/qvariantlistutils.h"
-#include "src/lib/jvm/jvmparameters.h"
+#include "../../graphics/splashscreen.h"
+#include "../utils/qvariantlistutils.h"
+#include "../jvm/jvmparameters.h"
 
 //We need that jni launcher run in a QThread separated from main
 //thread, if we use the main thread for launch  the jvm,

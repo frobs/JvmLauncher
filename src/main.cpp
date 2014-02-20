@@ -3,11 +3,11 @@
 #include <QString>
 #include <QDebug>
 #include <QThread>
-#include "src/graphics/splashscreen.h"
-#include "src/lib/os/osruntime.h"
-#include "src/lib/utils/configurationfile.h"
-#include "src/lib/spec/specificationsfactory.h"
-#include "src/lib/jvm/virtualmachine.h"
+#include "../src/graphics/splashscreen.h"
+#include "../src/lib/os/osruntime.h"
+#include "../src/lib/utils/configurationfile.h"
+#include "../src/lib/spec/specificationsfactory.h"
+#include "../src/lib/jvm/virtualmachine.h"
 
 
 int main (int argc, char* argv[]){

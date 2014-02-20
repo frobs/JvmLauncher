@@ -1,8 +1,8 @@
 #ifndef WINDOWSSPECIFICATIONS_H
 #define WINDOWSSPECIFICATIONS_H
 
-#include "src/lib/spec/systemspecifications.h"
-#include "src/lib/os/windows.h"
+#include "systemspecifications.h"
+#include "../os/windows.h"
 #include <QVariantList>
 
 class WindowsSpecifications : public SystemSpecifications{

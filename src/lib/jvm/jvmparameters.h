@@ -2,10 +2,10 @@
 #define JVMPARAMETERS_H
 
 #include <QVariantHash>
-#include "src/lib/utils/configurationfile.h"
-#include "src/lib/utils/qtresourcesfileconstants.h"
-#include "src/lib/utils/runtimeconstants.h"
-#include "src/lib/utils/qvariantlistutils.h"
+#include "../utils/configurationfile.h"
+#include "../utils/qtresourcesfileconstants.h"
+#include "../utils/runtimeconstants.h"
+#include "../utils/qvariantlistutils.h"
 
 #ifdef Q_OS_LINUX
   #include "src/lib/os/linux.h"
@@ -15,7 +15,7 @@
   #include "src/lib/os/mac.h"
 #endif
 #ifdef Q_OS_WIN
-  #include "src/lib/os/windows.h"
+  #include "../os/windows.h"
 #endif
 
 using namespace std;
