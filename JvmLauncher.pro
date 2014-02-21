@@ -17,10 +17,17 @@ CONFIG += app
 #The QSplashScreen is created in one thread and close in another thread
 #this produce a error of threads on debug mode, to fix it compile on relase mode
 win32{
-    release { DESTDIR = dist-windows_x86 }
-    INCLUDEPATH += $$(JAVA_HOME)/include
-    INCLUDEPATH += $$(JAVA_HOME)/include/win32
-    LIBS += -L"$$(JAVA_HOME)\lib" -ljvm
+  release { DESTDIR = dist-windows_x86 }
+  INCLUDEPATH += $$(JAVA_HOME)/include
+  INCLUDEPATH += $$(JAVA_HOME)/include/win32
+  LIBS += -L"$$(JAVA_HOME)\lib" -ljvm
+
+  HEADERS += \
+    src/lib/os/windows.h \
+    src/lib/spec/windowsspecifications.h
+  SOURCES += \
+    src/lib/os/windows.cpp \
+    src/lib/spec/windowsspecifications.cpp
 }
 
 #--------------LINUX--------------
@@ -79,9 +86,7 @@ HEADERS += \
   src/lib/os/multios.h \
   src/lib/jvm/jvmparameters.h \
   src/lib/utils/qvariantlistutils.h \
-  src/lib/jvm/virtualmachine.h \
-    src/lib/os/windows.h \
-    src/lib/spec/windowsspecifications.h
+  src/lib/jvm/virtualmachine.h
 
 SOURCES += \
   src/main.cpp \
@@ -93,9 +98,7 @@ SOURCES += \
   src/lib/os/multios.cpp \
   src/lib/jvm/jvmparameters.cpp \
   src/lib/utils/qvariantlistutils.cpp \
-  src/lib/jvm/virtualmachine.cpp \
-    src/lib/os/windows.cpp \
-    src/lib/spec/windowsspecifications.cpp
+  src/lib/jvm/virtualmachine.cpp
 
 RESOURCES += QtResourcesFile.qrc
 INSTALLS += dynamicLibs compress
