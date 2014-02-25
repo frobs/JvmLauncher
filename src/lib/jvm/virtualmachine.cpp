@@ -3,6 +3,7 @@
 VirtualMachine::VirtualMachine(QString& currentOs,QVariant& minimunJavaVersion){
   jvmParameters = new JvmParameters(currentOs);
   jvmArgs = jvmParameters->get();
+  qDebug()<<jvmArgs;
   m_minimunJREVersion = minimunJavaVersion;
   splash = SplashScreen::getInstance();
 }
@@ -13,7 +14,7 @@ void VirtualMachine::run(){
   //If your main class is inside a  package you must add
   //the package before main class name on call to invoke()
   SplashScreen::setSplashMessage("Launching java application");
-  invoke("MainWindow","main");
+  invoke("cc/abstra/bluemountain/client/Main","main");
 }
 
 void VirtualMachine::create_jvm(){
@@ -27,6 +28,7 @@ void VirtualMachine::create_jvm(){
   for (int i=0;i<jvmArgs.size();i++){
       options[i].optionString = strdup((char *)jvmArgs.at(i).toStdString().c_str());
   }
+
   //jvm args
   vm_args.version = JNI_VERSION_1_6;
   vm_args.nOptions = noOfOptions;

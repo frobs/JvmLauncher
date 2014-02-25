@@ -74,6 +74,7 @@ QString JvmParameters::formatClassPath(QString classpathFileConfigurationValue){
     //We change the pat to new path, this new path is composed by the current absolute
     //application path and relative paths loaded from configuration file
     tempPath.setPath(tempPath.toNativeSeparators(CURRENT_APPLICATION_PATH+"/"+relativePath));
+
     classPathFormatted.append(relativePath+
                               tempPath.entryList(fileExtensionFilter).join(CLASSPATH_SEPARATOR+relativePath)+
                               CLASSPATH_SEPARATOR);
