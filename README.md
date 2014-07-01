@@ -2,6 +2,9 @@ JvmLauncher
 ===========
 
 The idea behind this project is write a multiplatform application in C++/QT that launch a Java application (works for console and swing).
+Works in GNU/Linux, Windows and MACX.
+
+See all the information about configuration etc. on the [Wiki](https://github.com/frobs/JvmLauncher/wiki)
 
 Closed issues:
 * We can show a splash screen while the java libraries and application is been launched and is automatically closed.
