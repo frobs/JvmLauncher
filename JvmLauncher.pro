@@ -36,7 +36,8 @@ OTHER_FILES += \
     linux.pri \
     windows.pri \
     macx.pri \
-    unix.pri
+    unix.pri \
+    config/compile/linux.ini
 
 
 

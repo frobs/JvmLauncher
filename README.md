@@ -1,99 +1,14 @@
 JvmLauncher
 ===========
 
-A c++/qt multiplatform launcher for jvm applications
+The idea behind this project is write a multiplatform application in C++/QT that launch a Java application (works for console and swing).
 
-#Linux:
-> ##Compilation:
+Closed issues:
+* We can show a splash screen while the java libraries and application is been launched and is automatically closed.
+* Check the system and validate the minimun requeriments needed by our java app, and show a alert pop up if this isn't complete.
+* We can define static parameters and get low level machine information to parametrize the jvm where out java app will be launched.
 
-> > ###Requisites:
-
-> > > All in 64 bits.
-
-> > > Qt 4.8 or 5.2.
-
-> > > Gcc 4.x(tested with 4.7 and 4.8) standard used c++ 99
-
-> > > OpenJdk/Oracle Jdk 1.7
-
-> > ###Configuration:
-
-> > > Debian/Ubuntu and Qt-5.2:
-
-> > > `apt-get install libgl-dev`
-
-> > > `JAVA_HOME` environment variable with the path to JDK
-
-> > > `QT_LIBRARY_PATH` environment variable with the path to qt dynamic libraries that must be copy with launcher, libQtCore.os and libQtGui.os
-
-> > ###Commands:
-
-> > > Tests:
-
-> > > > `qmake testUnit.pro`
-
-> > > > `make`
-
-> > > Launcher:
-
-> > > > `qmake JvmLauncher.pro`
-
-> > > > `make` or `make install` (if you want a tar.gz with shared libraries inside)
-
-> > > > Remember copy your application to the launcher directory with the same path that you have specified on your jvm-parameters.ini/classpath
-
-> ##Execute:
-
-> > ###Requisites:
-
-> > > JRE 1.x
-
-> > ###Configuration:
-
-> > > `JRE_HOME` environment variable with the path to JRE
-
-> > > Shared libraries of JRE accesible to the system, i.e. using `LD_LIBRARY_PATH`
-
-> > ###Commands:
-
-> > > Tests:
-
-> > > > `./testUnitJvmLauncher`
-
-> > > Launcher:
-
-> > > > `./yourLauncherName`
-
-#Mac:
-> ##Compilation:
-
-> > ###Requisites:
-
-> > > All in 64 bits.
-
-> > > Qt 4.8 or 5.2.
-
-> > > CLANG(Version installed with Qt)
-
-> > > Oracle Jdk 1.7
-
-> > ###Configuration:
-> > > `JAVA_HOME` environment variable with the path to JDK
-
-> > > If you see this error when import project:
-
-> > > Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
-
-> > > > Execute `/usr/bin/xcodebuild` and agree the license
-
-> > > > Execute on the project directory: `qmake -spec macx-xcode JvmLauncher.pro`
-
-> ##Execute:
-
-> > ###Requisites:
-
-> > > JRE 1.x
-
-> > ###Configuration:
-
-> > > Shared libraries of JRE accesible to the system, i.e. using `DYLD_LIBRARY_PATH` 
+Future issues:
+* Big refactor and clean of code
+* Add the feature of check and download the java app updates when the launcher is executed, update libraries versions, the app.jar...
+* Add the option of launch a app without GUI, it is, without SplashScreen or popup alert. For console Java applications that will run in environment without x.
