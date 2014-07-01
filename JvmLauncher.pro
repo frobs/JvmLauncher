@@ -1,80 +1,9 @@
+#--------------COMMON TO ALL OPERATIVE SYSTEM--------------
 QT += core gui widgets
 TEMPLATE = app
 DEPENDPATH += . src src/graphics
 CONFIG += app
 
-#We need specify what classes will be available for each
-#operative system if we include a header of Linux and we
-#are compiling in Windows, the universe explodes.
-
-#--------------WINDOWS--------------
-#On windows we use msvc because mingw not link correctly to jvm.lib and produce a:
-#undefined reference to `_imp__ JNI_GetDefaultJavaVMInitArgs@4'
-#error: undefined reference to `_imp__JNI_CreateJavaVM@12'
-#How we use msvc all includes of headers on application need be refactor to be relatives
-#to the current file.
-#msvc compiler don't understand: DEPENDPATH qt macro
-#The QSplashScreen is created in one thread and close in another thread
-#this produce a error of threads on debug mode, to fix it compile on relase mode
-win32{
-  release { DESTDIR = dist-windows_x86 }
-  INCLUDEPATH += $$(JAVA_HOME)/include
-  INCLUDEPATH += $$(JAVA_HOME)/include/win32
-  LIBS += -L"$$(JAVA_HOME)\lib" -ljvm
-
-  HEADERS += \
-    src/lib/os/windows.h \
-    src/lib/spec/windowsspecifications.h
-  SOURCES += \
-    src/lib/os/windows.cpp \
-    src/lib/spec/windowsspecifications.cpp
-}
-
-#--------------LINUX--------------
-unix:!macx{
-  release { DESTDIR = dist-linux_x64 }
-  dynamicLibs.path += $$DESTDIR/libs
-  dynamicLibs.files += \
-    $$(QT_LIBRARY_PATH)/*Core.so \
-    $$(QT_LIBRARY_PATH)/*Gui.so
-  compress.path += '.'
-    compress.extra += 'tar czfv dist-linux_x64.tar.gz dist-linux_x64/'
-
-  INCLUDEPATH += $$(JAVA_HOME)/include
-  INCLUDEPATH += $$(JAVA_HOME)/include/linux
-  LIBS += -L$$(JRE_HOME)/lib/amd64/server -ljvm
-
-  HEADERS += \
-    src/lib/spec/linuxspecifications.h \
-    src/lib/os/linux.h
-  SOURCES += \
-    src/lib/spec/linuxspecifications.cpp \
-    src/lib/os/linux.cpp
-}
-
-#--------------MAC--------------
-macx{
-  INCLUDEPATH += $$(JAVA_HOME)/include
-  INCLUDEPATH += $$(JAVA_HOME)/include/darwin
-  LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server" -ljvm
-  LIBS += -L"/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/client" -ljvm
-  SOURCES+= \
-    src/lib/os/mac.cpp \
-    src/lib/spec/macspecifications.cpp
-  HEADERS += \
-    src/lib/os/mac.h \
-    src/lib/spec/macspecifications.h
-}
-
-#--------------UNIX--------------
-unix{
-  HEADERS += \
-    src/lib/os/unix.h
-  SOURCES += \
-    src/lib/os/unix.cpp
-}
-
-#--------------ALL OPERATIVE SYSTEM--------------
 HEADERS += \
   src/graphics/splashscreen.h \
   src/lib/utils/qtresourcesfileconstants.h \
@@ -102,3 +31,36 @@ SOURCES += \
 
 RESOURCES += QtResourcesFile.qrc
 INSTALLS += dynamicLibs compress
+
+OTHER_FILES += \
+    linux.pri \
+    windows.pri \
+    macx.pri \
+    unix.pri
+
+
+
+
+
+#We need specify what classes will be available for each
+#operative system if we include a header of Linux and we
+#are compiling in Windows, the universe explodes.
+#--------------WINDOWS--------------
+win32{
+  include(windows.pri)
+}
+
+#--------------LINUX--------------------
+unix:!macx{
+  include(linux.pri)
+}
+
+#--------------MAC----------------------
+macx{
+  include(macx.pri)
+}
+
+#--------------UNIX---------------------
+unix{
+  include(unix.pri)
+}
