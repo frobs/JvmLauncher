@@ -9,7 +9,7 @@ See all the information about configuration etc. on the [Wiki](https://github.co
 Closed issues:
 * We can show a splash screen while the java libraries and application is been launched and is automatically closed.
 * Check the system and validate the minimun requeriments needed by our java app, and show a alert pop up if this isn't complete.
-* We can define static parameters and get low level machine information to parametrize the jvm where out java app will be launched.
+* We can define static parameters and get low level machine information to parametrize the jvm where our java app will be launched.
 
 Future issues:
 * Big refactor and clean of code
