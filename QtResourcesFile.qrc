@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/img/SplashImage.jpg</file>
-        <file>config/minimun-system-requeriments.ini</file>
-        <file>config/jvm-parameters.ini</file>
+        <file>config/runtime/minimun-system-requeriments.ini</file>
+        <file>config/runtime/jvm-parameters.ini</file>
     </qresource>
 </RCC>
